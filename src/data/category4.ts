@@ -20,7 +20,7 @@ export const category4Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1260,
     approvedPromptText: 'A high-tech infographic titled "BEST SMART HOME HUBS" with a subtitle "CENTRAL CONTROLLERS FOR CONNECTED AUTOMATION". Isometric 3D smart home blueprint background. 6 panels: MULTI-PROTOCOL SUPPORT, LOCAL CONTROL & PRIVACY, VOICE ASSISTANT INTEGRATION, AUTOMATION ROUTINE ENGINES, MOBILE APP DASHBOARD, ENERGY MONITORING HUB. Warm dark grey, smart cyan, mint green.',
-    imageUrl: '/src/assets/images/smarthome_hubs_infographic_1792829861175.jpg',
+    imageUrl: '/src/assets/images/real_smarthome_hub_1792833785722.jpg',
     infographic: {
       title: 'BEST SMART HOME HUBS',
       subtitle: 'CENTRAL CONTROLLERS FOR CONNECTED AUTOMATION',
@@ -155,7 +155,7 @@ export const category4Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1250,
     approvedPromptText: 'A high-tech infographic titled "HOME SECURITY CAMERA SYSTEMS" with a subtitle "SMART SURVEILLANCE & NIGHT VISION SOLUTIONS". Home exterior overlay with target crosshairs background. 6 panels: 4K RESOLUTION & HDR, COLOR NIGHT VISION, AI HUMAN & VEHICLE DETECTION, LOCAL VS CLOUD STORAGE, TWO-WAY AUDIO TALK, WEATHERPROOF RATING. Slate grey, safety yellow, cobalt blue.',
-    imageUrl: '/src/assets/images/security_cameras_infographic_1792829862465.jpg',
+    imageUrl: '/src/assets/images/real_security_cam_1792833799647.jpg',
     infographic: {
       title: 'HOME SECURITY CAMERA SYSTEMS',
       subtitle: 'SMART SURVEILLANCE & NIGHT VISION SOLUTIONS',
@@ -289,7 +289,7 @@ export const category4Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1260,
     approvedPromptText: 'A high-tech infographic titled "NEXT GEN PC HARDWARE COMPONENTS" with a subtitle "ULTIMATE PERFORMANCE PARTS FOR GAMING & WORKSTATIONS". Exploded 3D view of PC chassis background. 6 panels: NEXT-GEN PROCESSORS (CPU), HIGH-END GRAPHICS CARDS (GPU), DDR5 HIGH-SPEED MEMORY, PCIe 5.0 NVMe SSDs, HIGH-EFFICIENCY POWER SUPPLIES, LIQUID COOLING SYSTEMS. Obsidian black, neon red, electric cyan.',
-    imageUrl: '/src/assets/images/pc_hardware_infographic_1792829863763.jpg',
+    imageUrl: '/src/assets/images/real_custom_pc_1792833814414.jpg',
     infographic: {
       title: 'NEXT GEN PC HARDWARE COMPONENTS',
       subtitle: 'ULTIMATE PERFORMANCE PARTS FOR GAMING & WORKSTATIONS',
@@ -425,7 +425,7 @@ export const category4Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1250,
     approvedPromptText: 'A high-tech infographic titled "PORTABLE TRAVEL ROUTER SETUP" with a subtitle "SECURE WI-FI ON THE GO FOR DIGITAL NOMADS". Sleek travel workspace background. 6 panels: HOTSPOT & REPEATER MODE, BUILT-IN VPN WIREGUARD, DUAL-BAND WI-FI 6 SPEED, COMPACT & USB-C POWERED, CAPTIVE PORTAL BYPASS, GUEST NETWORK ISOLATION. Clean navy, vibrant orange, white.',
-    imageUrl: '/src/assets/images/travel_router_infographic_1792829864941.jpg',
+    imageUrl: '/src/assets/images/real_travel_router_1792833829696.jpg',
     infographic: {
       title: 'PORTABLE TRAVEL ROUTER SETUP',
       subtitle: 'SECURE WI-FI ON THE GO FOR DIGITAL NOMADS',
@@ -560,7 +560,7 @@ export const category4Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1250,
     approvedPromptText: 'A high-tech infographic titled "ENERGY SAVING SMART APPLIANCES" with a subtitle "INTELLIGENT HOME DEVICES THAT LOWER ELECTRICITY BILLS". Eco-friendly kitchen with green energy lines background. 6 panels: SMART THERMOSTATS, INVERTER SMART REFRIGERATORS, INTELLIGENT WASHING MACHINES, SMART ENERGY MONITOR PLUGS, SOLAR PANELS & BATTERY SYNC, PEAK-HOUR LOAD SHIFTING. Deep emerald green, white, sky blue.',
-    imageUrl: '/src/assets/images/smart_appliances_infographic_1792829864809.jpg',
+    imageUrl: '/src/assets/images/real_smart_appliances_1792833845201.jpg',
     infographic: {
       title: 'ENERGY SAVING SMART APPLIANCES',
       subtitle: 'INTELLIGENT HOME DEVICES THAT LOWER ELECTRICITY BILLS',

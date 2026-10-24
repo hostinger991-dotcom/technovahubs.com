@@ -20,7 +20,7 @@ export const category2Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1280,
     approvedPromptText: 'A high-tech infographic titled "LATEST GENERATIVE AI TOOLS" with a subtitle "NEXT-GEN CREATIVE & AUTOMATION ENGINES". Glowing neural network mesh background. 6 panels: LARGE LANGUAGE MODELS (LLM), AI IMAGE GENERATORS, TEXT-TO-VIDEO SYNTHESIS, AI AUDIO & VOICE CLONING, CODE ASSISTANTS & COPILOTS, 3D MODEL GENERATION. Deep indigo, bright magenta, neon cyan.',
-    imageUrl: '/src/assets/images/generative_ai_infographic_1792829851167.jpg',
+    imageUrl: '/src/assets/images/real_generative_ai_1792833622225.jpg',
     infographic: {
       title: 'LATEST GENERATIVE AI TOOLS',
       subtitle: 'NEXT-GEN CREATIVE & AUTOMATION ENGINES',
@@ -155,7 +155,7 @@ export const category2Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1260,
     approvedPromptText: 'A high-tech infographic titled "AI PRODUCTIVITY TOOLS FOR BUSINESS" with a subtitle "AUTOMATING WORKFLOWS & ENTERPRISE EFFICIENCY". 3D isometric office architecture background. 6 panels: AUTOMATED MEETING SUMMARIES, AI DOCUMENT ANALYTICS, PREDICTIVE EMAIL WRITING, AI TASK MANAGEMENT, CUSTOMER SERVICE BOTS, DATA VISUALIZATION ENGINES. Royal blue, emerald green, sharp silver.',
-    imageUrl: '/src/assets/images/ai_productivity_infographic_1792829851812.jpg',
+    imageUrl: '/src/assets/images/real_student_apps_1792833648298.jpg',
     infographic: {
       title: 'AI PRODUCTIVITY TOOLS FOR BUSINESS',
       subtitle: 'AUTOMATING WORKFLOWS & ENTERPRISE EFFICIENCY',
@@ -291,7 +291,7 @@ export const category2Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1240,
     approvedPromptText: 'A high-tech infographic titled "AUTONOMOUS DRONE TECH TRENDS" with a subtitle "NEXT-GEN UNMANNED AERIAL VEHICLES & NAVIGATION". Aerial topographical grid map background. 6 panels: LiDAR & OBSTACLE AVOIDANCE, AI PATH PLANNING & SWARMING, THERMAL & SENSOR PAYLOADS, HIGH-CAPACITY DENSITY BATTERIES, 5G REAL-TIME TELEMETRY, AUTOMATED DOCKING STATIONS. Dark slate blue, safety yellow, electric cyan.',
-    imageUrl: '/src/assets/images/autonomous_drones_infographic_1792829853363.jpg',
+    imageUrl: '/src/assets/images/real_commercial_drone_1792833663031.jpg',
     infographic: {
       title: 'AUTONOMOUS DRONE TECH TRENDS',
       subtitle: 'NEXT-GEN UNMANNED AERIAL VEHICLES & NAVIGATION',
@@ -426,7 +426,7 @@ export const category2Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1260,
     approvedPromptText: 'A high-tech infographic titled "TOP MACHINE LEARNING FRAMEWORKS" with a subtitle "CORE LIBRARIES FOR NEURAL NETWORK DEVELOPMENT". Multi-layered neural network background. 6 panels: TENSORFLOW & ECOSYSTEM, PYTORCH & DYNAMIC GRAPHS, SCIKIT-LEARN FOR CLASSIC ML, KERAS FOR DEEP LEARNING, JAX & HIGH-PERFORMANCE MATH, HUGGING FACE TRANSFORMERS. Dark violet, bright orange, electric blue.',
-    imageUrl: '/src/assets/images/ml_frameworks_infographic_1792829853513.jpg',
+    imageUrl: '/src/assets/images/real_ml_frameworks_1792833678276.jpg',
     infographic: {
       title: 'TOP MACHINE LEARNING FRAMEWORKS',
       subtitle: 'CORE LIBRARIES FOR NEURAL NETWORK DEVELOPMENT',
@@ -561,7 +561,7 @@ export const category2Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1250,
     approvedPromptText: 'A high-tech infographic titled "HUMANOID ROBOTICS DEVELOPMENTS" with a subtitle "ADVANCED LOCOMOTION & AI HAND MANIPULATION". Clean futuristic laboratory with holographic robot framework. 6 panels: BIPEDAL LOCOMOTION, COMPUTER VISION & SLAM, NATURAL VOICE INTERACTION, DEXTEROUS TACTILE HANDS, SAFETY & FORCE LIMITING, SELF-CHARGING DOCKS. Crisp white, futuristic cyan, metallic grey.',
-    imageUrl: '/src/assets/images/humanoid_robotics_infographic_1792829855542.jpg',
+    imageUrl: '/src/assets/images/real_humanoid_robot_1792833693704.jpg',
     infographic: {
       title: 'HUMANOID ROBOTICS DEVELOPMENTS',
       subtitle: 'ADVANCED LOCOMOTION & AI HAND MANIPULATION',

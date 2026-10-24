@@ -20,7 +20,7 @@ export const category1Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1260,
     approvedPromptText: 'A high-tech infographic titled "BEST FLAGSHIP SMARTPHONES 2026" with a subtitle "TOP PREMIUM MOBILES & HARDWARE COMPARISON". Dark metallic surface with floating glassmorphism specs cards. 6 panels: AI CAMERA SYSTEMS, NEXT-GEN DISPLAY TECH, BATTERY & SILICON-CARBON TECH, FLAGSHIP CHIPSET POWER, SATELLITE CONNECTIVITY, BUILD & DURABILITY. Professional deep obsidian blue, electric cyan, and neon orange color scheme.',
-    imageUrl: '/src/assets/images/smartphones_2026_infographic_1792829843667.jpg',
+    imageUrl: '/src/assets/images/real_smartphones_2026_1792833546332.jpg',
     infographic: {
       title: 'BEST FLAGSHIP SMARTPHONES 2026',
       subtitle: 'TOP PREMIUM MOBILES & HARDWARE COMPARISON',
@@ -163,7 +163,7 @@ export const category1Articles: Article[] = [
     readTime: '7 min read',
     wordCount: 1240,
     approvedPromptText: 'A high-tech infographic titled "WIRELESS NOISE CANCELING EARBUDS" with a subtitle "PREMIUM AUDIO & ACTIVE NOISE CANCELLATION TECH". Acoustic soundwave frequency grid background. 6 panels: ACTIVE NOISE CANCELLATION (ANC), TRANSPARENCY MODE, DRIVER QUALITY & HI-RES AUDIO, BATTERY & CHARGING CASE, MICROPHONE & CALL QUALITY, WATER & SWEAT RESISTANCE. Matte black, metallic silver, electric purple.',
-    imageUrl: '/src/assets/images/earbuds_anc_infographic_1792829845391.jpg',
+    imageUrl: '/src/assets/images/real_anc_earbuds_1792833561359.jpg',
     infographic: {
       title: 'WIRELESS NOISE CANCELING EARBUDS',
       subtitle: 'PREMIUM AUDIO & ACTIVE NOISE CANCELLATION TECH',
@@ -300,7 +300,7 @@ export const category1Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1250,
     approvedPromptText: 'A high-tech infographic titled "TOP BUDGET GAMING LAPTOPS" with a subtitle "HIGH FRAME RATES & MAXIMUM VALUE HARDWARE". RGB lighting strips and circuit board patterns. 6 panels: DEDICATED GPU POWER, HIGH REFRESH RATE DISPLAYS, COOLING & THERMAL PIPES, RAM & SSD EXPANDABILITY, RGB KEYBOARD & ERGONOMICS, PORT SELECTION & I/O. Charcoal grey, crimson red, neon green.',
-    imageUrl: '/src/assets/images/gaming_laptops_infographic_1792829846691.jpg',
+    imageUrl: '/src/assets/images/real_gaming_laptop_1792833576678.jpg',
     infographic: {
       title: 'TOP BUDGET GAMING LAPTOPS',
       subtitle: 'HIGH FRAME RATES & MAXIMUM VALUE HARDWARE',
@@ -435,7 +435,7 @@ export const category1Articles: Article[] = [
     readTime: '7 min read',
     wordCount: 1220,
     approvedPromptText: 'A high-tech infographic titled "SMARTWATCH BATTERY LIFE TEST" with a subtitle "LONG-LASTING WEARABLES & POWER MANAGEMENT". Circular smartwatch bezel interface with glowing green power ring. 6 panels: SOLAR CHARGING TECH, LOW-POWER DISPLAY TECH, GPS TRACKING DRAIN, HEALTH SENSOR POWER IMPACT, BATTERY SAVER MODES, FAST CHARGING DOCKS. Dark slate, lime green, cobalt blue.',
-    imageUrl: '/src/assets/images/smartwatch_battery_infographic_1792829848468.jpg',
+    imageUrl: '/src/assets/images/real_smartwatch_battery_1792833591808.jpg',
     infographic: {
       title: 'SMARTWATCH BATTERY LIFE TEST',
       subtitle: 'LONG-LASTING WEARABLES & POWER MANAGEMENT',
@@ -571,7 +571,7 @@ export const category1Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1270,
     approvedPromptText: 'A high-tech infographic titled "NEXT GEN FOLDABLE PHONES" with a subtitle "FLEXIBLE DISPLAY INNOVATION & HINGE MECHANISMS". Futuristic 3D blueprint of a foldable device opening at 180 degrees. 6 panels: CREASELESS FLEXIBLE SCREENS, DURABLE HINGE MECHANISMS, MULTI-WINDOW MULTITASKING, SLIM FORM FACTOR & WEIGHT, FLEX-MODE CAMERA USAGE, WATER RESISTANCE RATING. Deep navy blue, bright magenta, metallic silver.',
-    imageUrl: '/src/assets/images/foldable_phones_infographic_1792829849592.jpg',
+    imageUrl: '/src/assets/images/real_foldable_phones_1792833606319.jpg',
     infographic: {
       title: 'NEXT GEN FOLDABLE PHONES',
       subtitle: 'FLEXIBLE DISPLAY INNOVATION & HINGE MECHANISMS',
