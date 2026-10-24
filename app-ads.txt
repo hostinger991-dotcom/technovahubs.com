@@ -1,0 +1,11 @@
+# technovahubs Authorized Sellers for Mobile and Connected Apps
+# https://technovahubs.com/app-ads.txt
+google.com, pub-9182374619283741, DIRECT, f08c47fec0942fa0
+google.com, pub-9182374619283741, RESELLER, f08c47fec0942fa0
+unity3d.com, 28194, DIRECT
+ironsrc.com, 10293, RESELLER
+applovin.com, 94812, DIRECT
+mopub.com, 10928, RESELLER
+amazon-adsystem.com, 3948, RESELLER, 1fbe7d2269a9ae99
+inmobi.com, 8472910, RESELLER
+admob.com, pub-9182374619283741, DIRECT, f08c47fec0942fa0

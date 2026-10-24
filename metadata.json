@@ -1,0 +1,8 @@
+{
+  "name": "technovahubs",
+  "description": "technovahubs - Engineering & Consumer Tech Journal. Independent daily coverage of consumer electronics, artificial intelligence, cybersecurity, and smart computing hardware.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

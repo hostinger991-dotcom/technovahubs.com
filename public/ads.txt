@@ -1,0 +1,21 @@
+# technovahubs AdSense and Authorized Digital Sellers Specification
+# https://technovahubs.com/ads.txt
+google.com, pub-9182374619283741, DIRECT, f08c47fec0942fa0
+google.com, pub-9182374619283741, RESELLER, f08c47fec0942fa0
+appnexus.com, 14285, RESELLER, f5ab79cb980f9e1d
+openx.com, 537142981, RESELLER, 6a698e2ec38604c6
+rubiconproject.com, 18924, RESELLER, 0bfd66d529a7380d
+pubmatic.com, 156942, RESELLER, 5d62e6307edd24f2
+indexexchange.com, 184913, RESELLER, 50b1c356f2c5c849
+amazon-adsystem.com, 3948, RESELLER, 1fbe7d2269a9ae99
+criteo.com, 28193, RESELLER, b322e32d12017261
+smartadserver.com, 4921, RESELLER, 439818816e8db3a8
+magnite.com, 10928, RESELLER, 0bfd66d529a7380d
+triplelift.com, 8491, RESELLER, 6a698e2ec38604c6
+yieldmo.com, 19482, RESELLER, 5d62e6307edd24f2
+teads.tv, 12048, RESELLER, 1564a92388432a68
+sovrn.com, 48190, RESELLER, 2562f74c0c16bb5a
+sharethrough.com, 19283, RESELLER, 219803358055651c
+media.net, 8CU81290, RESELLER
+taboola.com, 1198302, RESELLER
+outbrain.com, 00812749, RESELLER
