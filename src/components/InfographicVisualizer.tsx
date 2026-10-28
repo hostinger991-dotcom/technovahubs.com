@@ -142,6 +142,20 @@ export const InfographicVisualizer: React.FC<InfographicVisualizerProps> = ({
             alt={infographic.title}
             loading="lazy"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (!target.dataset.triedFallback) {
+                target.dataset.triedFallback = '1';
+                const filename = (imageUrl || '').split('/').pop();
+                target.src = `./images/${filename}`;
+              } else if (target.dataset.triedFallback === '1') {
+                target.dataset.triedFallback = '2';
+                const filename = (imageUrl || '').split('/').pop();
+                target.src = `/images/${filename}`;
+              } else {
+                setActiveTab('spec_matrix');
+              }
+            }}
             className="w-full h-auto object-cover max-h-[580px] transition-transform duration-500 group-hover:scale-[1.01]"
           />
           {/* Subtle bottom gradient overlay with label */}

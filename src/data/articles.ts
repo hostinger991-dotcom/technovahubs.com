@@ -134,7 +134,7 @@ export const EDITORS: EditorProfile[] = [
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&h=300&q=80',
     specialty: 'Semiconductor Fabrication, Silicon-Carbon Electrochemistry & Display Metrology',
     articlesWritten: 84,
-    contactEmail: 'sagheerofficial21dnb@gmail.com',
+    contactEmail: 'ahmadali07121@gmail.com',
   },
   {
     name: 'Dr. Aris Thorne',
@@ -143,7 +143,7 @@ export const EDITORS: EditorProfile[] = [
     avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&h=300&q=80',
     specialty: 'Diffusion Transformers, Token Economics & Distributed Neural Compilers',
     articlesWritten: 62,
-    contactEmail: 'sagheerofficial21dnb@gmail.com',
+    contactEmail: 'ahmadali07121@gmail.com',
   },
   {
     name: 'Julian Sterling',
@@ -152,7 +152,7 @@ export const EDITORS: EditorProfile[] = [
     avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&h=300&q=80',
     specialty: 'Zero-Knowledge Cryptography, Linux Kernel Security & EDR Behavioral Heuristics',
     articlesWritten: 71,
-    contactEmail: 'sagheerofficial21dnb@gmail.com',
+    contactEmail: 'ahmadali07121@gmail.com',
   },
   {
     name: 'Elena Rostova',
@@ -161,7 +161,7 @@ export const EDITORS: EditorProfile[] = [
     avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&h=300&q=80',
     specialty: 'xMEMS Transducers, Thread Mesh Protocols & Inverter Thermodynamics',
     articlesWritten: 53,
-    contactEmail: 'sagheerofficial21dnb@gmail.com',
+    contactEmail: 'ahmadali07121@gmail.com',
   },
   {
     name: 'Gareth Thorne',
@@ -170,6 +170,6 @@ export const EDITORS: EditorProfile[] = [
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&h=300&q=80',
     specialty: 'PCIe 5.0 Thermal Throttling, High-Refresh Display Overdrive & ATX 3.1 Excursions',
     articlesWritten: 92,
-    contactEmail: 'sagheerofficial21dnb@gmail.com',
+    contactEmail: 'ahmadali07121@gmail.com',
   },
 ];

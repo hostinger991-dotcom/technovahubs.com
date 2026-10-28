@@ -85,8 +85,8 @@ export const EditorsModal: React.FC<EditorsModalProps> = ({ isOpen, onClose }) =
         <div className="mt-6 p-4 rounded-xl bg-[#061411] border border-[#5fdee7]/30 flex flex-wrap items-center justify-between text-xs font-mono text-slate-400 gap-2">
           <div>
             <span>Newsroom Desk:</span>{' '}
-            <a href="mailto:sagheerofficial21dnb@gmail.com" className="text-[#ffd700] hover:underline">
-              sagheerofficial21dnb@gmail.com
+            <a href="mailto:ahmadali07121@gmail.com" className="text-[#ffd700] hover:underline">
+              ahmadali07121@gmail.com
             </a>
           </div>
           <div>

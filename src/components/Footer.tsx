@@ -166,7 +166,7 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <a
-                  href="/sitemap.xml"
+                  href="./sitemap.xml"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 text-slate-400 hover:underline"

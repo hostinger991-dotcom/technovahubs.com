@@ -74,7 +74,7 @@ export const SitemapModal: React.FC<SitemapModalProps> = ({
             <span>Click any article title or page below to open the complete long-form reading view instantly.</span>
           </div>
           <a
-            href="/sitemap.xml"
+            href="./sitemap.xml"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-[#5fdee7] hover:text-[#ffd700] font-mono transition-colors text-xs hover:underline"
