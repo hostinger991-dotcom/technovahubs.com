@@ -75,9 +75,9 @@ export const PrivacyPolicyModal: React.FC<ModalProps> = ({ isOpen, onClose }) =>
               For privacy-related inquiries, legal erasure requests, or data audits, contact our designated privacy officer:
             </p>
             <div className="p-3 rounded-lg bg-[#0b2721] border border-white/10 font-mono text-xs text-[#5fdee7]">
-              <div>Email: sagheerofficial21dnb@gmail.com</div>
-              <div>Telephone / WhatsApp: 03069256639</div>
-              <div>Address: technovahubs Editorial Newsroom, Sector 4, Tech Zone</div>
+              <div>Email: ahmadali07121@gmail.com</div>
+              <div>Telephone / WhatsApp: 03069256639 (+92 306 9256639)</div>
+              <div>Address: technovahubs (Daily Tech Radar) Editorial Newsroom</div>
             </div>
           </section>
         </div>

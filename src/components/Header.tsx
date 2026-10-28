@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Menu, X, Terminal, Sparkles, BookOpen } from 'lucide-react';
+import { Search, Menu, X, Cpu, Sparkles, Compass } from 'lucide-react';
 
 interface HeaderProps {
   currentCategory: string;
@@ -8,6 +8,7 @@ interface HeaderProps {
   onOpenContact: () => void;
   onOpenEditors: () => void;
   onOpenStandards: () => void;
+  onOpenSitemap: () => void;
   onSearchClick: () => void;
 }
 
@@ -18,23 +19,30 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenContact,
   onOpenEditors,
   onOpenStandards,
+  onOpenSitemap,
   onSearchClick,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Exact 4 Tech Categories as requested in header
   const categories = [
     { id: 'all', label: 'Home Feed' },
     { id: 'Consumer Electronics & Gadgets', label: 'Consumer Electronics' },
     { id: 'AI & Future Tech', label: 'AI & Future Tech' },
-    { id: 'Cybersecurity & Software', label: 'Cybersecurity' },
+    { id: 'Cybersecurity & Software', label: 'Cybersecurity & Software' },
     { id: 'Smart Home & Computing Hardware', label: 'Smart Home & Hardware' },
   ];
+
+  const handleCategoryClick = (id: string) => {
+    onSelectCategory(id);
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-40 bg-[#081c18]/95 backdrop-blur-md border-b border-[#5fdee7]/20 select-none">
       {/* Top Essential Header Row (Top Bar Contract: 3 Zones) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-8">
-        {/* Zone 1: Brand Wordmark (Single text element wordmark in display face) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-6">
+        {/* Zone 1: Brand Wordmark (dailytechrader.com inspired tech magazine branding) */}
         <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={() => onSelectCategory('all')}
@@ -54,15 +62,20 @@ export const Header: React.FC<HeaderProps> = ({
               </svg>
             </div>
             <div>
-              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-[#ffd700] transition-colors">
-                technovahubs
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-[#ffd700] transition-colors">
+                  technovahubs
+                </span>
+                <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#ffd700]/10 text-[#ffd700] border border-[#ffd700]/30 font-bold uppercase tracking-wider">
+                  Daily Tech Radar
+                </span>
+              </div>
             </div>
           </button>
         </div>
 
-        {/* Zone 2: Primary Navigation Links (Clean single-line text links with subtle hover underlines) */}
-        <nav className="hidden lg:flex items-center gap-5 text-xs font-semibold text-slate-300">
+        {/* Zone 2: Primary Navigation Categories (Directly in Header as requested) */}
+        <nav className="hidden xl:flex items-center gap-4 text-xs font-semibold text-slate-300">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -76,28 +89,43 @@ export const Header: React.FC<HeaderProps> = ({
               {cat.label}
             </button>
           ))}
-          <span className="text-slate-600">|</span>
+        </nav>
+
+        {/* Compact Navigation for Medium Screens (lg to xl) */}
+        <nav className="hidden lg:flex xl:hidden items-center gap-3 text-xs font-semibold text-slate-300">
           <button
-            onClick={onOpenEditors}
-            className="hover:text-[#ffd700] transition-colors whitespace-nowrap shrink-0"
+            onClick={() => onSelectCategory('all')}
+            className={`whitespace-nowrap ${currentCategory === 'all' ? 'text-[#ffd700] font-bold' : 'hover:text-[#5fdee7]'}`}
           >
-            Editors
+            Home
           </button>
           <button
-            onClick={onOpenAbout}
-            className="hover:text-[#ffd700] transition-colors whitespace-nowrap shrink-0"
+            onClick={() => onSelectCategory('Consumer Electronics & Gadgets')}
+            className={`whitespace-nowrap ${currentCategory === 'Consumer Electronics & Gadgets' ? 'text-[#ffd700] font-bold' : 'hover:text-[#5fdee7]'}`}
           >
-            About The Blog
+            Electronics
           </button>
           <button
-            onClick={onOpenContact}
-            className="hover:text-[#ffd700] transition-colors whitespace-nowrap shrink-0"
+            onClick={() => onSelectCategory('AI & Future Tech')}
+            className={`whitespace-nowrap ${currentCategory === 'AI & Future Tech' ? 'text-[#ffd700] font-bold' : 'hover:text-[#5fdee7]'}`}
           >
-            Contact
+            AI &amp; Future
+          </button>
+          <button
+            onClick={() => onSelectCategory('Cybersecurity & Software')}
+            className={`whitespace-nowrap ${currentCategory === 'Cybersecurity & Software' ? 'text-[#ffd700] font-bold' : 'hover:text-[#5fdee7]'}`}
+          >
+            Cybersecurity
+          </button>
+          <button
+            onClick={() => onSelectCategory('Smart Home & Computing Hardware')}
+            className={`whitespace-nowrap ${currentCategory === 'Smart Home & Computing Hardware' ? 'text-[#ffd700] font-bold' : 'hover:text-[#5fdee7]'}`}
+          >
+            Smart Home
           </button>
         </nav>
 
-        {/* Zone 3: 1 Primary Action (Search & Quick Reader CTA) */}
+        {/* Zone 3: Search Action & Mobile Toggle */}
         <div className="flex items-center gap-2.5 shrink-0">
           <button
             onClick={onSearchClick}
@@ -111,10 +139,21 @@ export const Header: React.FC<HeaderProps> = ({
             </kbd>
           </button>
 
+          {/* Quick Sitemap icon button */}
+          <button
+            onClick={onOpenSitemap}
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300 hover:text-[#ffd700] hover:border-[#ffd700] transition-colors"
+            title="Open Interactive HTML Sitemap"
+          >
+            <Compass className="w-3.5 h-3.5 text-[#5fdee7]" />
+            <span className="text-[11px]">Sitemap</span>
+          </button>
+
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 rounded-lg bg-[#0b2721] text-slate-300 border border-white/10 hover:text-[#ffd700] hover:border-[#ffd700] transition-colors"
+            aria-label="Toggle Navigation Drawer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -124,63 +163,76 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Brand Sub-Header Tagline Strip */}
       <div className="bg-[#0b2721]/90 border-t border-white/5 py-1 px-4 text-center">
         <p className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#5fdee7] uppercase font-bold">
-          ENGINEERING &amp; CONSUMER TECH JOURNAL — PUBLISHED DAILY
+          DAILY TECH RADAR · CONSUMER ELECTRONICS &amp; HARDWARE JOURNAL
         </p>
       </div>
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#061411] border-b border-[#5fdee7]/30 px-4 py-4 space-y-3 animate-in slide-in-from-top-2">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
-            Tech Journal Categories
-          </div>
-          <div className="grid grid-cols-1 gap-1.5">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => {
-                  onSelectCategory(cat.id);
-                  setMobileMenuOpen(false);
-                }}
-                className={`text-left px-3 py-2 rounded-md text-xs font-medium transition-colors ${
-                  currentCategory === cat.id
-                    ? 'bg-[#ffd700] text-slate-950 font-bold'
-                    : 'text-slate-300 hover:bg-white/5 hover:text-[#5fdee7]'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+        <div className="lg:hidden bg-[#061411] border-b border-[#5fdee7]/30 px-4 py-4 space-y-4 animate-in slide-in-from-top-2">
+          <div>
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[#ffd700] mb-2">
+              Header Categories
+            </div>
+            <div className="grid grid-cols-1 gap-1.5">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => handleCategoryClick(cat.id)}
+                  className={`text-left px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    currentCategory === cat.id
+                      ? 'bg-[#ffd700] text-slate-950 font-bold'
+                      : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="pt-2 border-t border-white/10 grid grid-cols-3 gap-2 text-center text-xs font-semibold">
-            <button
-              onClick={() => {
-                onOpenEditors();
-                setMobileMenuOpen(false);
-              }}
-              className="py-1.5 px-2 rounded bg-white/5 text-slate-200 hover:text-[#ffd700]"
-            >
-              Editors
-            </button>
-            <button
-              onClick={() => {
-                onOpenAbout();
-                setMobileMenuOpen(false);
-              }}
-              className="py-1.5 px-2 rounded bg-white/5 text-slate-200 hover:text-[#ffd700]"
-            >
-              About
-            </button>
-            <button
-              onClick={() => {
-                onOpenContact();
-                setMobileMenuOpen(false);
-              }}
-              className="py-1.5 px-2 rounded bg-white/5 text-slate-200 hover:text-[#ffd700]"
-            >
-              Contact
-            </button>
+          <div className="pt-3 border-t border-white/10">
+            <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-2">
+              Site Pages (Available in Footer)
+            </div>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenAbout();
+                }}
+                className="p-2 rounded bg-white/5 text-slate-300 hover:text-[#ffd700] text-left"
+              >
+                About Us
+              </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenContact();
+                }}
+                className="p-2 rounded bg-white/5 text-slate-300 hover:text-[#ffd700] text-left"
+              >
+                Contact Us
+              </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenSitemap();
+                }}
+                className="p-2 rounded bg-white/5 text-[#5fdee7] hover:text-[#ffd700] text-left font-mono"
+              >
+                HTML Sitemap
+              </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenStandards();
+                }}
+                className="p-2 rounded bg-white/5 text-slate-300 hover:text-[#ffd700] text-left"
+              >
+                Editorial Standards
+              </button>
+            </div>
           </div>
         </div>
       )}

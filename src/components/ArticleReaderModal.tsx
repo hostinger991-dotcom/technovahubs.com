@@ -395,7 +395,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                 Independent, non-sponsored hardware evaluation. All measurements conducted in accordance with IEEE, AES, and NIST standardized laboratory protocols.
               </p>
               <div className="mt-2 text-xs font-mono text-[#ffd700]">
-                Official Contact: sagheerofficial21dnb@gmail.com · Tel/WhatsApp: 03069256639
+                Official Contact: ahmadali07121@gmail.com · Tel/WhatsApp: 03069256639 (+92 306 9256639)
               </div>
             </div>
 

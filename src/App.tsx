@@ -7,6 +7,8 @@ import { ArticleReaderModal } from './components/ArticleReaderModal';
 import { EditorialStandardsModal } from './components/EditorialStandardsModal';
 import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
 import { TermsModal } from './components/TermsModal';
+import { DisclaimerModal } from './components/DisclaimerModal';
+import { SitemapModal } from './components/SitemapModal';
 import { ContactModal } from './components/ContactModal';
 import { EditorsModal } from './components/EditorsModal';
 import { AboutModal } from './components/AboutModal';
@@ -29,7 +31,10 @@ import {
   Compass,
   Zap,
   Phone,
-  Mail
+  Mail,
+  Flame,
+  TrendingUp,
+  Radio
 } from 'lucide-react';
 
 export default function App() {
@@ -39,6 +44,8 @@ export default function App() {
   const [standardsModalOpen, setStandardsModalOpen] = useState(false);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [termsModalOpen, setTermsModalOpen] = useState(false);
+  const [disclaimerModalOpen, setDisclaimerModalOpen] = useState(false);
+  const [sitemapModalOpen, setSitemapModalOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [editorsModalOpen, setEditorsModalOpen] = useState(false);
   const [aboutModalOpen, setAboutModalOpen] = useState(false);
@@ -67,6 +74,11 @@ export default function App() {
 
   // Lead Feature Story
   const leadArticle = allArticles[0]; // best-flagship-smartphones-2026
+  
+  // Trending Spotlight Stories (Daily Tech Radar Style)
+  const trendingArticles = useMemo(() => {
+    return [allArticles[1], allArticles[2], allArticles[5], allArticles[10]];
+  }, []);
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
@@ -90,7 +102,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#081c18] text-slate-100 selection:bg-[#ffd700] selection:text-slate-950 font-sans antialiased">
-      {/* 1. Header with Top Bar Contract */}
+      {/* 1. Header with Top Bar Contract & Direct Categories */}
       <Header
         currentCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
@@ -98,6 +110,7 @@ export default function App() {
         onOpenContact={() => setContactModalOpen(true)}
         onOpenEditors={() => setEditorsModalOpen(true)}
         onOpenStandards={() => setStandardsModalOpen(true)}
+        onOpenSitemap={() => setSitemapModalOpen(true)}
         onSearchClick={() => setSearchModalOpen(true)}
       />
 
@@ -114,7 +127,7 @@ export default function App() {
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#5fdee7]">
                   <span className="w-2 h-2 rounded-full bg-[#5fdee7] animate-pulse" />
-                  <span className="font-bold uppercase tracking-wider">LABORATORY INVESTIGATION · LEAD PAPER</span>
+                  <span className="font-bold uppercase tracking-wider">DAILY TECH RADAR · LEAD INVESTIGATION</span>
                   <span className="text-slate-500">·</span>
                   <span>{leadArticle.publishedAt}</span>
                   <span className="text-slate-500">·</span>
@@ -140,32 +153,24 @@ export default function App() {
                     <div className="text-[#5fdee7] font-bold text-sm">4,520 Nits</div>
                   </div>
                   <div className="p-2.5 rounded-lg bg-black/40 border border-white/10 col-span-2 sm:col-span-1">
-                    <div className="text-[10px] text-slate-400">NTN Satellite</div>
-                    <div className="text-emerald-400 font-bold text-sm">3GPP Rel-17</div>
+                    <div className="text-[10px] text-slate-400">Sustained FPS</div>
+                    <div className="text-emerald-400 font-bold text-sm">119.8 FPS</div>
                   </div>
                 </div>
 
-                {/* Action CTA */}
-                <div className="pt-3 flex flex-wrap items-center gap-4">
+                {/* Action CTA with Yellow Hover Micro-Interaction */}
+                <div className="pt-4 flex flex-wrap items-center gap-4">
                   <button
                     onClick={() => setActiveArticle(leadArticle)}
-                    className="px-6 py-3 rounded-xl bg-[#ffd700] text-slate-950 font-bold text-xs hover:bg-[#ffcc00] btn-yellow-hover flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(255,215,0,0.45)]"
+                    className="px-6 py-3 rounded-xl bg-[#ffd700] text-slate-950 font-bold text-sm hover:bg-[#ffcc00] transition-all flex items-center gap-2 btn-yellow-hover shadow-[0_0_20px_rgba(255,215,0,0.4)]"
                   >
-                    <span>Read Full Technical Teardown</span>
+                    <span>Read Full 1,260-Word Paper</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
 
-                  <div className="flex items-center gap-2.5 text-xs text-slate-400">
-                    <img
-                      src={leadArticle.author.avatar}
-                      alt={leadArticle.author.name}
-                      className="w-8 h-8 rounded-full object-cover border border-[#5fdee7]"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div>
-                      <div className="text-white font-medium">{leadArticle.author.name}</div>
-                      <div className="text-[10px] text-slate-500 font-mono">{leadArticle.author.role}</div>
-                    </div>
+                  <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
+                    <ShieldCheck className="w-4 h-4 text-[#ffd700]" />
+                    <span>Peer-Reviewed Hardware Data</span>
                   </div>
                 </div>
               </div>
@@ -231,6 +236,34 @@ export default function App() {
                   )}
                 </div>
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* Daily Tech Radar Trending Quick-Bar */}
+        {selectedCategory === 'all' && (
+          <section className="p-4 rounded-xl bg-[#0b2721]/50 border border-white/10">
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ffd700] uppercase tracking-wider mb-3">
+              <Flame className="w-4 h-4 text-orange-400" />
+              <span>Trending on Daily Tech Radar</span>
+              <span className="text-slate-500 font-normal">| Verified Laboratory Hot Topics</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {trendingArticles.map((art) => (
+                <div
+                  key={art.id}
+                  onClick={() => setActiveArticle(art)}
+                  className="p-3 rounded-lg bg-[#061411] border border-white/5 hover:border-[#ffd700] cursor-pointer group transition-all"
+                >
+                  <div className="flex items-center justify-between text-[10px] font-mono text-[#5fdee7] mb-1">
+                    <span className="uppercase">{art.category.split('&')[0]}</span>
+                    <span className="text-[#ffd700]">{art.readTime}</span>
+                  </div>
+                  <h4 className="text-xs font-bold text-white group-hover:text-[#ffd700] transition-colors line-clamp-2">
+                    {art.title}
+                  </h4>
+                </div>
+              ))}
             </div>
           </section>
         )}
@@ -371,25 +404,25 @@ export default function App() {
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-[#5fdee7] uppercase tracking-wider mb-2">
               <ShieldCheck className="w-4 h-4 text-[#ffd700]" />
-              <span>INDEPENDENT ENGINEERING JOURNALISM</span>
+              <span>INDEPENDENT ENGINEERING JOURNALISM · DAILY TECH RADAR</span>
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-white">
               Have Hardware Telemetry or a Security Vulnerability to Disclose?
             </h3>
             <p className="text-xs text-slate-300 mt-1 max-w-2xl leading-relaxed">
-              Our hardware engineers and cryptographic analysts accept anonymous hardware samples and vulnerability disclosures. Direct coms to our editorial desk:
+              Our hardware engineers and cryptographic analysts accept anonymous hardware samples and vulnerability disclosures. Direct communications to our senior editorial desk:
             </p>
             <div className="mt-3 flex flex-wrap items-center gap-4 font-mono text-xs text-slate-300">
               <div className="flex items-center gap-1.5 text-[#ffd700]">
                 <Mail className="w-4 h-4 text-[#5fdee7]" />
-                <a href="mailto:sagheerofficial21dnb@gmail.com" className="hover:underline">
-                  sagheerofficial21dnb@gmail.com
+                <a href="mailto:ahmadali07121@gmail.com" className="hover:underline font-bold">
+                  ahmadali07121@gmail.com
                 </a>
               </div>
               <span className="text-slate-600">·</span>
               <div className="flex items-center gap-1.5 text-[#ffd700]">
                 <Phone className="w-4 h-4 text-[#5fdee7]" />
-                <a href="tel:03069256639" className="hover:underline">
+                <a href="tel:03069256639" className="hover:underline font-bold">
                   03069256639
                 </a>
               </div>
@@ -413,11 +446,13 @@ export default function App() {
         </section>
       </main>
 
-      {/* 4. Footer with strict adherence to requirement #3 (NO mention of ads.txt in UI) */}
+      {/* 4. Footer with explicit display of required pages (NO mention of ads.txt in UI) */}
       <Footer
         onSelectCategory={handleSelectCategory}
         onOpenPrivacy={() => setPrivacyModalOpen(true)}
         onOpenTerms={() => setTermsModalOpen(true)}
+        onOpenDisclaimer={() => setDisclaimerModalOpen(true)}
+        onOpenSitemap={() => setSitemapModalOpen(true)}
         onOpenStandards={() => setStandardsModalOpen(true)}
         onOpenContact={() => setContactModalOpen(true)}
         onOpenEditors={() => setEditorsModalOpen(true)}
@@ -432,7 +467,26 @@ export default function App() {
         />
       )}
 
-      {/* 6. Compliance & Info Modals */}
+      {/* 6. Compliance, Institutional & Sitemap Modals */}
+      <DisclaimerModal
+        isOpen={disclaimerModalOpen}
+        onClose={() => setDisclaimerModalOpen(false)}
+        onOpenContact={() => setContactModalOpen(true)}
+      />
+
+      <SitemapModal
+        isOpen={sitemapModalOpen}
+        onClose={() => setSitemapModalOpen(false)}
+        articles={allArticles}
+        onSelectArticle={(art) => setActiveArticle(art)}
+        onOpenAbout={() => setAboutModalOpen(true)}
+        onOpenContact={() => setContactModalOpen(true)}
+        onOpenPrivacy={() => setPrivacyModalOpen(true)}
+        onOpenTerms={() => setTermsModalOpen(true)}
+        onOpenDisclaimer={() => setDisclaimerModalOpen(true)}
+        onOpenStandards={() => setStandardsModalOpen(true)}
+      />
+
       <EditorialStandardsModal
         isOpen={standardsModalOpen}
         onClose={() => setStandardsModalOpen(false)}
@@ -456,6 +510,7 @@ export default function App() {
       <AboutModal
         isOpen={aboutModalOpen}
         onClose={() => setAboutModalOpen(false)}
+        onOpenContact={() => setContactModalOpen(true)}
       />
       <SearchModal
         isOpen={searchModalOpen}

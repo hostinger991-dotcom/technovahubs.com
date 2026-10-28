@@ -75,8 +75,8 @@ export const EditorialStandardsModal: React.FC<ModalProps> = ({ isOpen, onClose 
               To report technical inaccuracies or submit laboratory data for review, contact our senior standards desk:
             </p>
             <div className="p-3 rounded-lg bg-[#0b2721] border border-white/10 font-mono text-xs text-[#5fdee7]">
-              <div>Email: sagheerofficial21dnb@gmail.com</div>
-              <div>Telephone / WhatsApp: 03069256639</div>
+              <div>Email: ahmadali07121@gmail.com</div>
+              <div>Telephone / WhatsApp: 03069256639 (+92 306 9256639)</div>
             </div>
           </section>
         </div>

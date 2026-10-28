@@ -68,8 +68,8 @@ export const TermsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               For legal communications or licensing inquiries, contact our legal desk:
             </p>
             <div className="p-3 rounded-lg bg-[#0b2721] border border-white/10 font-mono text-xs text-[#5fdee7]">
-              <div>Email: sagheerofficial21dnb@gmail.com</div>
-              <div>Telephone / WhatsApp: 03069256639</div>
+              <div>Email: ahmadali07121@gmail.com</div>
+              <div>Telephone / WhatsApp: 03069256639 (+92 306 9256639)</div>
             </div>
           </section>
         </div>
