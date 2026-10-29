@@ -561,10 +561,11 @@ export default function App() {
 
           {/* 3. Article Grid with SPECIAL FULL-YELLOW HOVER EFFECT */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {paginatedArticles.map((article) => (
+            {paginatedArticles.map((article, idx) => (
               <ArticleCard
                 key={article.id}
                 article={article}
+                priority={idx < 4}
                 onOpenArticle={(art) => handleOpenArticle(art)}
               />
             ))}

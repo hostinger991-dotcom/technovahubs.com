@@ -7,14 +7,18 @@ interface ArticleCardProps {
   article: Article;
   onOpenArticle: (article: Article) => void;
   featured?: boolean;
+  priority?: boolean;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
   article,
   onOpenArticle,
   featured = false,
+  priority = false,
 }) => {
   const [viewMode, setViewMode] = useState<'photo' | 'matrix'>('photo');
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   return (
     <article
@@ -29,17 +33,30 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <div className="relative overflow-hidden rounded-lg border border-[#ffd700]/30 group-hover:border-[#ffd700] transition-all duration-300 bg-[#061411]">
             {viewMode === 'photo' ? (
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#061411]">
+                {/* Mobile shimmer loader while downloading */}
+                {!imageLoaded && !hasError && (
+                  <div className="absolute inset-0 bg-[#061411] flex flex-col items-center justify-center z-0 animate-pulse">
+                    <div className="w-6 h-6 rounded-full border-2 border-[#ffd700] border-t-transparent animate-spin mb-1.5" />
+                    <span className="text-[9px] font-mono text-[#ffd700] uppercase tracking-wider">Loading Visual...</span>
+                  </div>
+                )}
+
                 <img
                   src={getSafeImageUrl(article.imageUrl)}
                   alt={article.title}
-                  loading="lazy"
+                  loading={priority ? 'eager' : 'lazy'}
                   decoding="async"
-                  onError={(e) => handleImageError(e, article.imageUrl, () => setViewMode('matrix'))}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block"
+                  onLoad={() => setImageLoaded(true)}
+                  onError={(e) => {
+                    handleImageError(e, article.imageUrl, () => setHasError(true));
+                  }}
+                  className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block ${
+                    imageLoaded ? 'opacity-100' : 'opacity-90'
+                  }`}
                 />
 
                 {/* Overlay telemetry badges with Yellow Branding */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-between p-3 pointer-events-none">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-between p-3 pointer-events-none z-10">
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-black/70 text-[#ffd700] border border-[#ffd700]/40 backdrop-blur-xs uppercase truncate max-w-[70%]">
                       {article.keyword}
