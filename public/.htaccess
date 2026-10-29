@@ -1,0 +1,58 @@
+# ==============================================================================
+# Hostinger & Apache / LiteSpeed Production Configuration for Technovahubs
+# Handles direct SPA deep-linking, direct image serving, and crawler compliance
+# ==============================================================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Direct Image Resolution: If requested in /images/, check root ./images and public/images
+  RewriteCond %{REQUEST_URI} ^/images/(.*)$ [NC]
+  RewriteCond %{DOCUMENT_ROOT}/images/%1 -f
+  RewriteRule ^images/(.*)$ /images/$1 [L]
+
+  RewriteCond %{REQUEST_URI} ^/images/(.*)$ [NC]
+  RewriteCond %{DOCUMENT_ROOT}/public/images/%1 -f
+  RewriteRule ^images/(.*)$ /public/images/$1 [L]
+
+  RewriteCond %{REQUEST_URI} ^/images/(.*)$ [NC]
+  RewriteCond %{DOCUMENT_ROOT}/dist/images/%1 -f
+  RewriteRule ^images/(.*)$ /dist/images/$1 [L]
+
+  # 2. Existing physical files or directories (ads.txt, robots.txt, sitemap.xml, assets, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 3. SPA Route Fallback: Any article, category, or modal path routes to index.html with 200 OK
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# MIME Types for static assets and images
+<IfModule mod_mime.c>
+  AddType image/jpeg .jpg .jpeg
+  AddType image/png .png
+  AddType image/svg+xml .svg
+  AddType image/webp .webp
+  AddType text/plain .txt
+  AddType application/xml .xml
+</IfModule>
+
+# Browser Caching and CORS for AdSense, RevBid, and Media Crawlers
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpg|jpeg|png|gif|svg|webp|ico)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(txt|xml)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Content-Type "text/plain; charset=utf-8"
+  </FilesMatch>
+  <FilesMatch "sitemap\.xml$">
+    Header set Content-Type "application/xml; charset=utf-8"
+  </FilesMatch>
+</IfModule>
+
+# Disable directory browsing for security
+Options -Indexes
