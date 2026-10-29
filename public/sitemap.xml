@@ -1,170 +1,397 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Core Institutional Pages -->
   <url>
     <loc>https://technovahubs.com/</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Category: Consumer Electronics & Gadgets -->
-  <url>
-    <loc>https://technovahubs.com/article/best-flagship-smartphones-2026</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/wireless-noise-canceling-earbuds</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/top-budget-gaming-laptops</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/smartwatch-battery-life-test</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/next-gen-foldable-phones</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- Category: Artificial Intelligence & Future Tech -->
-  <url>
-    <loc>https://technovahubs.com/article/latest-generative-ai-tools</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/ai-productivity-tools-for-business</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/autonomous-drone-technology-trends</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/top-machine-learning-frameworks</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/humanoid-robotics-developments</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- Category: Cybersecurity & Software -->
-  <url>
-    <loc>https://technovahubs.com/article/best-vpn-for-online-privacy</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/top-antivirus-software-reviews</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/how-to-speed-up-windows-pc</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/secure-password-manager-comparison</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/data-privacy-protection-guide</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- Category: Smart Home & Computing Hardware -->
-  <url>
-    <loc>https://technovahubs.com/article/best-smart-home-hubs</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/home-security-camera-system-reviews</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/next-gen-pc-hardware-components</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/portable-travel-router-setup</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://technovahubs.com/article/energy-saving-smart-appliances</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- Institutional Pages -->
   <url>
     <loc>https://technovahubs.com/about</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://technovahubs.com/contact</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://technovahubs.com/privacy</loc>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://technovahubs.com/privacy-policy</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://technovahubs.com/terms</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://technovahubs.com/disclaimer</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://technovahubs.com/editorial-standards</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://technovahubs.com/sitemap</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- 20 Technical Research Papers with High-Res Image Telemetry -->
+  <url>
+    <loc>https://technovahubs.com/article/best-flagship-smartphones-2026</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_smartphones_2026_1792833546332.jpg</image:loc>
+      <image:title>Best Flagship Smartphones 2026: Silicon-Carbon Battery Teardowns and Optical Telemetry Benchmarks</image:title>
+      <image:caption>The Definitive Engineering Comparison of Snapdragon 8 Elite Gen 2, A19 Pro, and Next-Gen Variable Apertures</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/wireless-noise-canceling-earbuds</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_anc_earbuds_1792833561359.jpg</image:loc>
+      <image:title>Wireless Noise Canceling Earbuds: Acoustic Laboratory Teardowns and ANC Isolation Curves</image:title>
+      <image:caption>Frequency Response Accuracy, MEMS Driver Transients, and Spatial Transparency Tested on B&amp;K 5128 Rigs</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/top-budget-gaming-laptops</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_gaming_laptop_1792833576678.jpg</image:loc>
+      <image:title>Top Budget Gaming Laptops 2026: Thermal Vapor Chambers and Wattage Benchmarks</image:title>
+      <image:caption>Extracting Maximum Frame Rates Under $1,100: RTX 5060 Mobile, Ryzen 8000 Zen 5, and Display Uniformity</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/smartwatch-battery-life-test</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_smartwatch_battery_1792833591808.jpg</image:loc>
+      <image:title>Smartwatch Battery Life Test: Dual-Engine Architectures and Continuous GPS Drain Benchmarks</image:title>
+      <image:caption>From Daily Recharging to 30-Day Solar Endurance: Testing Wearable Power Management in Extreme Real-World Scenarios</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/next-gen-foldable-phones</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_foldable_phones_1792833606319.jpg</image:loc>
+      <image:title>Next Gen Foldable Phones: Teardown of Zero-Crease Waterdrop Hinges and UTG Durability</image:title>
+      <image:caption>From Fragile Novelty to Daily Driver: Dual-Axis Titanium Mechanisms, Sub-9mm Profiles, and IPX8 Ingress Protection</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/latest-generative-ai-tools</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_generative_ai_1792833622225.jpg</image:loc>
+      <image:title>Latest Generative AI Tools 2026: Multi-Modal Diffusion, Video Synthesis, and Agentic Pipelines</image:title>
+      <image:caption>State-of-the-Art Evaluation of Sora 2, Claude 3.7 Sonnet, Gemini 2.5 Pro, and Real-Time Latent Consistency Models</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/ai-productivity-tools-for-business</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_student_apps_1792833648298.jpg</image:loc>
+      <image:title>AI Productivity Tools for Business 2026: Enterprise Automation, RAG, and Workflow Orchestration</image:title>
+      <image:caption>Deploying Scalable Agentic Systems: LLM Orchestration, Autonomous Meeting Intelligence, and Enterprise Knowledge Retrieval</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/autonomous-drone-technology-trends</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_commercial_drone_1792833663031.jpg</image:loc>
+      <image:title>Autonomous Drone Technology Trends 2026: Solid-State LiDAR, Edge SLAM, and Swarm Intelligence</image:title>
+      <image:caption>From Manual Remote Piloting to Level 5 BVLOS Autonomy: Structural Teardowns of Commercial UAV Platforms</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/top-machine-learning-frameworks</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_ml_frameworks_1792833678276.jpg</image:loc>
+      <image:title>Top Machine Learning Frameworks 2026: Compiler Graphs, JAX Scaling, and PyTorch 2.5</image:title>
+      <image:caption>Comprehensive Benchmark of PyTorch, JAX, Mojo, TensorFlow, and Hugging Face in Distributed Training and Inference</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/humanoid-robotics-developments</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_humanoid_robot_1792833693704.jpg</image:loc>
+      <image:title>Humanoid Robotics Developments 2026: Actuator Torque Density, Vision-Language-Action Models, and Bipedal SLAM</image:title>
+      <image:caption>From Factory Prototypes to Autonomous Warehouse Deployment: Tesla Optimus Gen 3, Figure 02, and Boston Dynamics Atlas</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/best-vpn-for-online-privacy</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_vpn_privacy_1792833709206.jpg</image:loc>
+      <image:title>Best VPN for Online Privacy 2026: WireGuard Kernels, RAM-Only Servers, and Cryptographic Audits</image:title>
+      <image:caption>Comprehensive Network Packet Analysis of Post-Quantum Ciphers, RAM-Disk Infrastructure, and Independent Court Verification</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/top-antivirus-software-reviews</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_antivirus_sec_1792833724249.jpg</image:loc>
+      <image:title>Top Antivirus Software Reviews 2026: Behavioral Heuristics, EDR Telemetry, and Zero-Day Ransomware Shields</image:title>
+      <image:caption>Laboratory Testing of Bitdefender, CrowdStrike Falcon Go, Windows Defender ATP, and Malwarebytes Against 500 Live Malware Samples</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/how-to-speed-up-windows-pc</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_speedup_win11_1792833739264.jpg</image:loc>
+      <image:title>How to Speed Up Windows PC: Low-Level Kernel Optimization, Debloating, and NVMe TRIM Tuning</image:title>
+      <image:caption>A Step-by-Step Technical Guide to Eradicating Telemetry Stutter, Reclaiming RAM, and Maximizing Hardware Responsiveness</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/secure-password-manager-comparison</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_pwd_manager_1792833756301.jpg</image:loc>
+      <image:title>Secure Password Manager Comparison 2026: Zero-Knowledge Cryptography, Argon2id, and Passkey FIDO2 Support</image:title>
+      <image:caption>The Definite Security Audit: Bitwarden, 1Password, KeePassXC, and Proton Pass Dissected Under Threat Modeling</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/data-privacy-protection-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_data_privacy_1792833770493.jpg</image:loc>
+      <image:title>Data Privacy Protection Guide 2026: Anti-Fingerprinting, Data Broker Opt-Outs, and Threat Modeling</image:title>
+      <image:caption>Reclaiming Your Digital Footprint: Canvas Randomization, DNS-over-HTTPS, and End-to-End Encrypted Communications</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/best-smart-home-hubs</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_smarthome_hub_1792833785722.jpg</image:loc>
+      <image:title>Best Smart Home Hubs 2026: Matter 1.3, Thread Border Routers, and 100% Local Automation Engines</image:title>
+      <image:caption>Home Assistant Yellow, Apple HomePod 2, Hubitat Elevation C-8 Pro, and SmartThings Station Benchmarked</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/home-security-camera-system-reviews</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_security_cam_1792833799647.jpg</image:loc>
+      <image:title>Home Security Camera System Reviews 2026: 4K Color Night Vision, Edge AI, and Local NVR Storage</image:title>
+      <image:caption>Reolink, UniFi Protect, EufyCam S380, and Lorex 4K Tested Under Lux Meters and False-Alarm Stress Tests</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/next-gen-pc-hardware-components</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_custom_pc_1792833814414.jpg</image:loc>
+      <image:title>Next Gen PC Hardware Components 2026: PCIe 5.0 NVMe, 8000MT/s DDR5, and ATX 3.1 Power Delivery</image:title>
+      <image:caption>The Architectural Guide to 3nm Zen 5, Intel Arrow Lake, Blackwell GPUs, and Micro-Channel Liquid Cooling Loops</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/portable-travel-router-setup</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_travel_router_1792833829696.jpg</image:loc>
+      <image:title>Portable Travel Router Setup 2026: WireGuard Tunnels, Captive Portal Bypassing, and Wi-Fi 6 Repeater Optimization</image:title>
+      <image:caption>The Digital Nomad’s Field Guide to GL.iNet Beryl AX, Slate AX, and OpenWrt Hardware for Secure Hotel Wi-Fi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/article/energy-saving-smart-appliances</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://technovahubs.com/images/real_smart_appliances_1792833845201.jpg</image:loc>
+      <image:title>Energy Saving Smart Appliances 2026: Heat Pump Inverters, Matter 1.3 Telemetry, and Dynamic Grid Load Shifting</image:title>
+      <image:caption>Laboratory Teardown of Variable-Speed Inverter Compressors, Smart Thermostat Thermal Algorithms, and Micro-Grid Sync</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Direct High-Resolution Hardware Telemetry Images -->
+  <url>
+    <loc>https://technovahubs.com/images/real_smartphones_2026_1792833546332.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_anc_earbuds_1792833561359.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_gaming_laptop_1792833576678.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_smartwatch_battery_1792833591808.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_foldable_phones_1792833606319.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_generative_ai_1792833622225.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_student_apps_1792833648298.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_commercial_drone_1792833663031.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_ml_frameworks_1792833678276.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_humanoid_robot_1792833693704.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_vpn_privacy_1792833709206.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_antivirus_sec_1792833724249.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_speedup_win11_1792833739264.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_pwd_manager_1792833756301.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_data_privacy_1792833770493.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_smarthome_hub_1792833785722.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_security_cam_1792833799647.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_custom_pc_1792833814414.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_travel_router_1792833829696.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://technovahubs.com/images/real_smart_appliances_1792833845201.jpg</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

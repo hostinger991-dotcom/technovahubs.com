@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { allArticles, CATEGORIES, Article, CategoryMeta } from './data/articles';
 import { Header } from './components/Header';
 import { ContinuousTicker } from './components/ContinuousTicker';
@@ -36,7 +36,8 @@ import {
   Mail,
   Flame,
   TrendingUp,
-  Radio
+  Radio,
+  AlertCircle
 } from 'lucide-react';
 
 export default function App() {
@@ -52,6 +53,7 @@ export default function App() {
   const [editorsModalOpen, setEditorsModalOpen] = useState(false);
   const [aboutModalOpen, setAboutModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [notFoundAlert, setNotFoundAlert] = useState<string | null>(null);
   const articlesPerPage = 6;
 
   // Global hotkey for Search ('/' key)
@@ -66,35 +68,190 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Sync URL hash with active article for direct link opening & sitemap navigation
-  useEffect(() => {
-    const syncFromHash = () => {
-      const rawHash = window.location.hash.replace(/^#\/?/, '');
-      if (rawHash) {
-        const found = allArticles.find(
-          (a) => a.slug === rawHash || a.id === rawHash || a.id === `art-${rawHash}`
-        );
-        if (found) {
-          setActiveArticle(found);
-        }
-      }
-    };
+  // Centralized URL routing for direct sitemap links, browser back/forward, and deep links
+  const syncRouteFromLocation = useCallback(() => {
+    // 1. Get raw pathname, hash, and search
+    const pathname = decodeURIComponent(window.location.pathname).replace(/\/+$/, '') || '/';
+    const hash = decodeURIComponent(window.location.hash).replace(/^#\/?/, '').replace(/\/+$/, '');
+    const searchParams = new URLSearchParams(window.location.search);
+    const queryRoute = searchParams.get('p') || searchParams.get('route') || searchParams.get('article') || '';
 
-    syncFromHash();
-    window.addEventListener('hashchange', syncFromHash);
-    return () => window.removeEventListener('hashchange', syncFromHash);
+    // Determine normalized clean path
+    let cleanPath = (queryRoute || (pathname !== '/' ? pathname : '') || hash).trim();
+    if (!cleanPath.startsWith('/') && !cleanPath.startsWith('http')) {
+      cleanPath = '/' + cleanPath;
+    }
+
+    const lower = cleanPath.toLowerCase();
+
+    // Check Institutional & Regulatory Pages from Sitemap
+    if (lower === '/about' || lower === '/about-us') {
+      setAboutModalOpen(true);
+      setActiveArticle(null);
+      setNotFoundAlert(null);
+      document.title = 'About Us — technovahubs Engineering Journal';
+      return;
+    }
+
+    if (lower === '/contact' || lower === '/contact-us') {
+      setContactModalOpen(true);
+      setActiveArticle(null);
+      setNotFoundAlert(null);
+      document.title = 'Contact Newsroom & Bureau — technovahubs';
+      return;
+    }
+
+    if (lower === '/privacy' || lower === '/privacy-policy') {
+      setPrivacyModalOpen(true);
+      setActiveArticle(null);
+      setNotFoundAlert(null);
+      document.title = 'Privacy Policy & Advertising Disclosures — technovahubs';
+      return;
+    }
+
+    if (lower === '/terms' || lower === '/terms-and-conditions' || lower === '/terms-of-service') {
+      setTermsModalOpen(true);
+      setActiveArticle(null);
+      setNotFoundAlert(null);
+      document.title = 'Terms & Conditions of Service — technovahubs';
+      return;
+    }
+
+    if (lower === '/disclaimer') {
+      setDisclaimerModalOpen(true);
+      setActiveArticle(null);
+      setNotFoundAlert(null);
+      document.title = 'Editorial & Advertising Disclaimer — technovahubs';
+      return;
+    }
+
+    if (lower === '/editorial-standards' || lower === '/standards') {
+      setStandardsModalOpen(true);
+      setActiveArticle(null);
+      setNotFoundAlert(null);
+      document.title = 'Editorial Standards & Testing Protocols — technovahubs';
+      return;
+    }
+
+    if (lower === '/sitemap' || lower === '/sitemap.html') {
+      setSitemapModalOpen(true);
+      setActiveArticle(null);
+      setNotFoundAlert(null);
+      document.title = 'Interactive HTML Sitemap & Index — technovahubs';
+      return;
+    }
+
+    if (lower === '/editors') {
+      setEditorsModalOpen(true);
+      setActiveArticle(null);
+      setNotFoundAlert(null);
+      document.title = 'Editorial Board & Peer Reviewers — technovahubs';
+      return;
+    }
+
+    // Check Category Route: /category/:categorySlug
+    if (lower.startsWith('/category/')) {
+      const catSlug = lower.replace('/category/', '').trim();
+      const matchedCat = CATEGORIES.find(
+        (c) =>
+          c.id.toLowerCase() === catSlug ||
+          c.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === catSlug ||
+          c.name.toLowerCase().includes(catSlug)
+      );
+      if (matchedCat) {
+        setSelectedCategory(matchedCat.name);
+        setActiveArticle(null);
+        setNotFoundAlert(null);
+        document.title = `${matchedCat.name} — technovahubs`;
+        return;
+      }
+    }
+
+    // Check Article Route: /article/:slug or /:slug
+    let articleSlug = '';
+    if (lower.startsWith('/article/')) {
+      articleSlug = lower.replace('/article/', '').trim();
+    } else if (cleanPath !== '/' && !cleanPath.includes('/')) {
+      articleSlug = cleanPath.replace('/', '').trim();
+    }
+
+    if (articleSlug) {
+      const found = allArticles.find(
+        (a) =>
+          a.slug.toLowerCase() === articleSlug ||
+          a.id.toLowerCase() === articleSlug ||
+          a.id.toLowerCase() === `art-${articleSlug}`
+      );
+      if (found) {
+        setActiveArticle(found);
+        setNotFoundAlert(null);
+        document.title = `${found.title} — technovahubs`;
+        return;
+      } else {
+        // Unknown article slug
+        setNotFoundAlert(`Requested research paper "/${articleSlug}" was not found. Here are the 20 verified papers.`);
+        setActiveArticle(null);
+      }
+    }
+
+    // Default clean home feed
+    if (pathname === '/' && !hash && !queryRoute) {
+      setActiveArticle(null);
+      setNotFoundAlert(null);
+      document.title = 'technovahubs — Engineering & Consumer Tech Journal';
+    }
   }, []);
 
-  // Update hash when activeArticle changes
+  useEffect(() => {
+    syncRouteFromLocation();
+    window.addEventListener('popstate', syncRouteFromLocation);
+    window.addEventListener('hashchange', syncRouteFromLocation);
+    return () => {
+      window.removeEventListener('popstate', syncRouteFromLocation);
+      window.removeEventListener('hashchange', syncRouteFromLocation);
+    };
+  }, [syncRouteFromLocation]);
+
+  // Navigate & open article with real URL matching sitemap.xml
   const handleOpenArticle = (article: Article) => {
     setActiveArticle(article);
-    window.location.hash = article.slug;
+    setNotFoundAlert(null);
+    document.title = `${article.title} — technovahubs`;
+    try {
+      window.history.pushState(null, '', `/article/${article.slug}`);
+    } catch {
+      window.location.hash = `/article/${article.slug}`;
+    }
   };
 
   const handleCloseArticle = () => {
     setActiveArticle(null);
-    if (window.location.hash) {
-      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    document.title = 'technovahubs — Engineering & Consumer Tech Journal';
+    try {
+      window.history.pushState(null, '', '/');
+    } catch {
+      window.location.hash = '';
+    }
+  };
+
+  const openPageModal = (path: string, openSetter: (v: boolean) => void, title: string) => {
+    openSetter(true);
+    setNotFoundAlert(null);
+    document.title = `${title} — technovahubs`;
+    try {
+      window.history.pushState(null, '', path);
+    } catch {
+      window.location.hash = path;
+    }
+  };
+
+  const closePageModal = (closeSetter: (v: boolean) => void) => {
+    closeSetter(false);
+    document.title = 'technovahubs — Engineering & Consumer Tech Journal';
+    try {
+      window.history.pushState(null, '', '/');
+    } catch {
+      window.location.hash = '';
     }
   };
 
@@ -124,6 +281,7 @@ export default function App() {
   const handleSelectCategory = (cat: string) => {
     setSelectedCategory(cat);
     setCurrentPage(1);
+    setNotFoundAlert(null);
     window.scrollTo({ top: 400, behavior: 'smooth' });
   };
 
@@ -140,16 +298,48 @@ export default function App() {
       <Header
         currentCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
-        onOpenAbout={() => setAboutModalOpen(true)}
-        onOpenContact={() => setContactModalOpen(true)}
-        onOpenEditors={() => setEditorsModalOpen(true)}
-        onOpenStandards={() => setStandardsModalOpen(true)}
-        onOpenSitemap={() => setSitemapModalOpen(true)}
+        onOpenAbout={() => openPageModal('/about', setAboutModalOpen, 'About Us')}
+        onOpenContact={() => openPageModal('/contact', setContactModalOpen, 'Contact Us')}
+        onOpenEditors={() => openPageModal('/editors', setEditorsModalOpen, 'Editorial Board')}
+        onOpenStandards={() => openPageModal('/editorial-standards', setStandardsModalOpen, 'Editorial Standards')}
+        onOpenSitemap={() => openPageModal('/sitemap', setSitemapModalOpen, 'HTML Sitemap')}
         onSearchClick={() => setSearchModalOpen(true)}
       />
 
       {/* 2. Continuous Ticker Tape directly underneath main header */}
       <ContinuousTicker onSelectArticle={handleOpenTickerArticle} />
+
+      {/* Not Found Safe Fallback Alert (If invalid URL pasted) */}
+      {notFoundAlert && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 w-full">
+          <div className="p-4 rounded-xl bg-[#0b2721] border border-[#ffd700] text-slate-200 flex items-center justify-between gap-4 shadow-[0_0_20px_rgba(255,215,0,0.25)]">
+            <div className="flex items-center gap-3">
+              <AlertCircle className="w-5 h-5 text-[#ffd700] shrink-0" />
+              <div className="text-xs font-mono">
+                <span className="font-bold text-[#ffd700] uppercase">Notice: </span>
+                <span>{notFoundAlert}</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setSearchModalOpen(true)}
+                className="px-3 py-1.5 rounded-lg bg-[#ffd700] text-slate-950 text-xs font-mono font-bold hover:bg-[#ffcc00] transition-colors cursor-pointer"
+              >
+                Search Papers
+              </button>
+              <button
+                onClick={() => {
+                  setNotFoundAlert(null);
+                  try { window.history.pushState(null, '', '/'); } catch {}
+                }}
+                className="px-3 py-1.5 rounded-lg bg-white/10 text-xs font-mono hover:bg-white/20 transition-colors cursor-pointer"
+              >
+                Dismiss
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 3. Top Header Leaderboard Ad Unit (IAB 728x90 compliant for RevBid & AdSense) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 w-full">
@@ -458,13 +648,13 @@ export default function App() {
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <button
-              onClick={() => setStandardsModalOpen(true)}
+              onClick={() => openPageModal('/editorial-standards', setStandardsModalOpen, 'Editorial Standards')}
               className="px-4 py-2.5 rounded-lg bg-[#061411] border border-white/15 text-xs text-slate-200 hover:text-[#ffd700] hover:border-[#ffd700] transition-colors cursor-pointer"
             >
               Review Testing Protocols
             </button>
             <button
-              onClick={() => setContactModalOpen(true)}
+              onClick={() => openPageModal('/contact', setContactModalOpen, 'Contact Us')}
               className="px-5 py-2.5 rounded-lg bg-[#ffd700] text-slate-950 font-bold text-xs hover:bg-[#ffcc00] btn-yellow-hover transition-all shadow-[0_0_15px_rgba(255,215,0,0.4)] cursor-pointer"
             >
               Contact Desk
@@ -476,14 +666,14 @@ export default function App() {
       {/* 4. Footer with explicit display of required pages (NO mention of ads.txt in UI) */}
       <Footer
         onSelectCategory={handleSelectCategory}
-        onOpenPrivacy={() => setPrivacyModalOpen(true)}
-        onOpenTerms={() => setTermsModalOpen(true)}
-        onOpenDisclaimer={() => setDisclaimerModalOpen(true)}
-        onOpenSitemap={() => setSitemapModalOpen(true)}
-        onOpenStandards={() => setStandardsModalOpen(true)}
-        onOpenContact={() => setContactModalOpen(true)}
-        onOpenEditors={() => setEditorsModalOpen(true)}
-        onOpenAbout={() => setAboutModalOpen(true)}
+        onOpenPrivacy={() => openPageModal('/privacy-policy', setPrivacyModalOpen, 'Privacy Policy')}
+        onOpenTerms={() => openPageModal('/terms', setTermsModalOpen, 'Terms & Conditions')}
+        onOpenDisclaimer={() => openPageModal('/disclaimer', setDisclaimerModalOpen, 'Disclaimer')}
+        onOpenSitemap={() => openPageModal('/sitemap', setSitemapModalOpen, 'HTML Sitemap')}
+        onOpenStandards={() => openPageModal('/editorial-standards', setStandardsModalOpen, 'Editorial Standards')}
+        onOpenContact={() => openPageModal('/contact', setContactModalOpen, 'Contact Us')}
+        onOpenEditors={() => openPageModal('/editors', setEditorsModalOpen, 'Editorial Board')}
+        onOpenAbout={() => openPageModal('/about', setAboutModalOpen, 'About Us')}
       />
 
       {/* 5. Interactive Long-Form Reading Modal */}
@@ -497,48 +687,48 @@ export default function App() {
       {/* 6. Compliance, Institutional & Sitemap Modals */}
       <DisclaimerModal
         isOpen={disclaimerModalOpen}
-        onClose={() => setDisclaimerModalOpen(false)}
-        onOpenContact={() => setContactModalOpen(true)}
+        onClose={() => closePageModal(setDisclaimerModalOpen)}
+        onOpenContact={() => openPageModal('/contact', setContactModalOpen, 'Contact Us')}
       />
 
       <SitemapModal
         isOpen={sitemapModalOpen}
-        onClose={() => setSitemapModalOpen(false)}
+        onClose={() => closePageModal(setSitemapModalOpen)}
         articles={allArticles}
         onSelectArticle={(art) => handleOpenArticle(art)}
         onSelectCategory={(cat) => handleSelectCategory(cat)}
-        onOpenAbout={() => setAboutModalOpen(true)}
-        onOpenContact={() => setContactModalOpen(true)}
-        onOpenPrivacy={() => setPrivacyModalOpen(true)}
-        onOpenTerms={() => setTermsModalOpen(true)}
-        onOpenDisclaimer={() => setDisclaimerModalOpen(true)}
-        onOpenStandards={() => setStandardsModalOpen(true)}
+        onOpenAbout={() => openPageModal('/about', setAboutModalOpen, 'About Us')}
+        onOpenContact={() => openPageModal('/contact', setContactModalOpen, 'Contact Us')}
+        onOpenPrivacy={() => openPageModal('/privacy-policy', setPrivacyModalOpen, 'Privacy Policy')}
+        onOpenTerms={() => openPageModal('/terms', setTermsModalOpen, 'Terms & Conditions')}
+        onOpenDisclaimer={() => openPageModal('/disclaimer', setDisclaimerModalOpen, 'Disclaimer')}
+        onOpenStandards={() => openPageModal('/editorial-standards', setStandardsModalOpen, 'Editorial Standards')}
       />
 
       <EditorialStandardsModal
         isOpen={standardsModalOpen}
-        onClose={() => setStandardsModalOpen(false)}
+        onClose={() => closePageModal(setStandardsModalOpen)}
       />
       <PrivacyPolicyModal
         isOpen={privacyModalOpen}
-        onClose={() => setPrivacyModalOpen(false)}
+        onClose={() => closePageModal(setPrivacyModalOpen)}
       />
       <TermsModal
         isOpen={termsModalOpen}
-        onClose={() => setTermsModalOpen(false)}
+        onClose={() => closePageModal(setTermsModalOpen)}
       />
       <ContactModal
         isOpen={contactModalOpen}
-        onClose={() => setContactModalOpen(false)}
+        onClose={() => closePageModal(setContactModalOpen)}
       />
       <EditorsModal
         isOpen={editorsModalOpen}
-        onClose={() => setEditorsModalOpen(false)}
+        onClose={() => closePageModal(setEditorsModalOpen)}
       />
       <AboutModal
         isOpen={aboutModalOpen}
-        onClose={() => setAboutModalOpen(false)}
-        onOpenContact={() => setContactModalOpen(true)}
+        onClose={() => closePageModal(setAboutModalOpen)}
+        onOpenContact={() => openPageModal('/contact', setContactModalOpen, 'Contact Us')}
       />
       <SearchModal
         isOpen={searchModalOpen}
