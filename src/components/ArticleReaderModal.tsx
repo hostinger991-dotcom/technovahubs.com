@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Article } from '../types/article';
 import { InfographicVisualizer } from './InfographicVisualizer';
+import { AdSlot } from './AdSlot';
 import { 
   X, 
   Clock, 
@@ -101,9 +102,9 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 bg-[#040e0c]/90 backdrop-blur-xl flex flex-col justify-start items-center overflow-hidden animate-in fade-in duration-200">
       {/* Top Reading Progress Bar */}
-      <div className="w-full bg-[#081c18] border-b border-[#5fdee7]/25 sticky top-0 z-50">
+      <div className="w-full bg-[#081c18] border-b border-[#ffd700]/30 sticky top-0 z-50">
         <div
-          className="h-1 bg-gradient-to-r from-[#5fdee7] via-[#ffd700] to-[#ffcc00] transition-all duration-150"
+          className="h-1 bg-gradient-to-r from-[#ffd700] via-[#ffcc00] to-[#f59e0b] shadow-[0_0_8px_#ffd700] transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
         />
         
@@ -142,8 +143,8 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
             <div className="flex items-center border border-white/10 rounded overflow-hidden">
               <button
                 onClick={() => setFontSize('normal')}
-                className={`px-2 py-1 text-xs font-mono ${
-                  fontSize === 'normal' ? 'bg-[#5fdee7] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+                className={`px-2 py-1 text-xs font-mono cursor-pointer ${
+                  fontSize === 'normal' ? 'bg-[#ffd700] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
                 }`}
                 title="Default text size"
               >
@@ -151,8 +152,8 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               </button>
               <button
                 onClick={() => setFontSize('large')}
-                className={`px-2 py-1 text-xs font-mono font-semibold ${
-                  fontSize === 'large' ? 'bg-[#5fdee7] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+                className={`px-2 py-1 text-xs font-mono font-semibold cursor-pointer ${
+                  fontSize === 'large' ? 'bg-[#ffd700] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
                 }`}
                 title="Larger text size"
               >
@@ -160,8 +161,8 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               </button>
               <button
                 onClick={() => setFontSize('xlarge')}
-                className={`px-2 py-1 text-xs font-mono font-bold ${
-                  fontSize === 'xlarge' ? 'bg-[#5fdee7] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+                className={`px-2 py-1 text-xs font-mono font-bold cursor-pointer ${
+                  fontSize === 'xlarge' ? 'bg-[#ffd700] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
                 }`}
                 title="Maximum text size"
               >
@@ -277,19 +278,19 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
           </div>
 
           {/* Empirical Benchmarks Data Table */}
-          <div className="mb-10 overflow-x-auto rounded-xl border border-white/10 bg-[#061411]">
+          <div className="mb-8 overflow-x-auto rounded-xl border border-white/10 bg-[#061411]">
             <div className="p-3.5 bg-white/5 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-2 text-xs font-mono font-bold text-white uppercase">
-                <Table className="w-4 h-4 text-[#5fdee7]" />
+                <Table className="w-4 h-4 text-[#ffd700]" />
                 <span>Empirical Hardware Telemetry &amp; Comparative Benchmarks</span>
               </div>
-              <span className="text-[10px] font-mono text-[#ffd700]">STANDARDIZED TEST RIGS</span>
+              <span className="text-[10px] font-mono text-[#ffd700] font-bold">STANDARDIZED TEST RIGS</span>
             </div>
             <table className="w-full text-left text-xs font-mono">
               <thead className="bg-[#0b2721] text-slate-400 border-b border-white/10">
                 <tr>
                   <th className="p-3 font-semibold">Test Specification</th>
-                  <th className="p-3 font-semibold text-[#5fdee7]">Laboratory Winner</th>
+                  <th className="p-3 font-semibold text-[#ffd700]">Laboratory Winner</th>
                   <th className="p-3 font-semibold">Runner-Up</th>
                   <th className="p-3 font-semibold text-[#ffd700]">Performance Delta</th>
                 </tr>
@@ -298,7 +299,7 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
                 {article.benchmarks.map((row, idx) => (
                   <tr key={idx} className="hover:bg-white/5 transition-colors">
                     <td className="p-3 font-medium text-slate-200">{row.testName}</td>
-                    <td className="p-3 text-[#5fdee7] font-bold">{row.categoryWinner}</td>
+                    <td className="p-3 text-[#ffd700] font-bold">{row.categoryWinner}</td>
                     <td className="p-3 text-slate-400">{row.runnerUp}</td>
                     <td className="p-3 text-[#ffd700] font-bold">{row.performanceDelta}</td>
                   </tr>
@@ -306,6 +307,9 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({
               </tbody>
             </table>
           </div>
+
+          {/* In-Article Programmatic Header Bidding Ad Unit (RevBid / AdSense compliant) */}
+          <AdSlot slotId={`article-mid-${article.id}`} format="leaderboard" className="my-8" />
 
           {/* Main Article Body Prose (1,200 - 1,300 words) */}
           <div className={`prose prose-invert max-w-none text-slate-200 space-y-8 font-sans ${getFontSizeClass()}`}>

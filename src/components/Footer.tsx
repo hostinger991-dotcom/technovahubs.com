@@ -25,19 +25,21 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenAbout,
 }) => {
   return (
-    <footer className="bg-[#051310] border-t border-[#5fdee7]/20 text-slate-300 pt-12 pb-8 text-xs select-none">
+    <footer className="bg-[#051310] border-t border-[#ffd700]/25 text-slate-300 pt-12 pb-8 text-xs select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Top Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 pb-10 border-b border-white/10">
           {/* Column 1: Brand & Daily Tech Radar Mission */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-[#0b2721] border border-[#5fdee7] flex items-center justify-center shadow-[0_0_10px_rgba(95,222,231,0.4)]">
+              <div className="w-8 h-8 rounded-lg bg-[#0b2721] border border-[#ffd700] flex items-center justify-center shadow-[0_0_12px_rgba(255,215,0,0.35)]">
                 <Cpu className="w-4 h-4 text-[#ffd700]" />
               </div>
               <div>
-                <span className="text-lg font-bold text-white tracking-tight">technovahubs</span>
-                <span className="block text-[10px] font-mono text-[#5fdee7] tracking-wider uppercase font-semibold">
+                <span className="text-lg font-bold text-white tracking-tight">
+                  technova<span className="text-[#ffd700]">hubs</span>
+                </span>
+                <span className="block text-[10px] font-mono text-[#ffd700] tracking-wider uppercase font-semibold">
                   Daily Tech Radar Edition
                 </span>
               </div>
@@ -45,57 +47,57 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="text-slate-400 text-xs leading-relaxed">
               An independent daily journal of consumer electronics, artificial intelligence, cybersecurity, and smart computing hardware. Built with peer-reviewed laboratory methodology and standardized empirical telemetry.
             </p>
-            <div className="pt-2 text-[11px] font-mono text-[#5fdee7] flex items-center gap-2">
-              <span>ISSN 2994-1842</span> · <span>PEER REVIEWED</span>
+            <div className="pt-2 text-[11px] font-mono text-[#ffd700] flex items-center gap-2 font-semibold">
+              <span>ISSN 2994-1842</span> · <span>PEER REVIEWED &amp; VERIFIED</span>
             </div>
           </div>
 
-          {/* Column 2: Tech Categories (Header Mirrors Categories) */}
+          {/* Column 2: Tech Categories */}
           <div>
-            <h4 className="text-xs font-mono font-bold tracking-wider uppercase text-[#ffd700] mb-3">
-              Research Categories
+            <h4 className="text-xs font-mono font-bold tracking-wider uppercase text-[#ffd700] mb-3 flex items-center gap-1.5">
+              <span>Research Categories</span>
             </h4>
             <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => onSelectCategory('Consumer Electronics & Gadgets')}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span className="text-[#5fdee7]">›</span>
+                  <span className="text-[#ffd700]">›</span>
                   <span>Consumer Electronics &amp; Gadgets</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => onSelectCategory('AI & Future Tech')}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span className="text-[#5fdee7]">›</span>
+                  <span className="text-[#ffd700]">›</span>
                   <span>AI &amp; Future Tech</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => onSelectCategory('Cybersecurity & Software')}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span className="text-[#5fdee7]">›</span>
+                  <span className="text-[#ffd700]">›</span>
                   <span>Cybersecurity &amp; Software</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => onSelectCategory('Smart Home & Computing Hardware')}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span className="text-[#5fdee7]">›</span>
+                  <span className="text-[#ffd700]">›</span>
                   <span>Smart Home &amp; Computing Hardware</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => onSelectCategory('all')}
-                  className="hover:text-[#ffd700] transition-colors text-left text-slate-400 hover:text-white flex items-center gap-1.5 pt-1"
+                  className="hover:text-[#ffd700] transition-colors text-left text-slate-400 hover:text-white flex items-center gap-1.5 pt-1 cursor-pointer"
                 >
                   <span className="text-[#ffd700]">›</span>
                   <span>View All 20 Technical Papers</span>
@@ -104,7 +106,7 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Column 3: Institutional Pages (User explicitly requested: About Us, Contact Us, privacy policy, terms & condition, Disclaimer, sitemap) */}
+          {/* Column 3: Institutional Pages */}
           <div>
             <h4 className="text-xs font-mono font-bold tracking-wider uppercase text-[#ffd700] mb-3">
               Pages &amp; Regulatory
@@ -113,43 +115,43 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={onOpenAbout}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 font-medium text-white"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 font-medium text-white cursor-pointer"
                 >
-                  <span className="text-[#5fdee7]">›</span>
+                  <span className="text-[#ffd700]">›</span>
                   <span>About Us</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={onOpenContact}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 font-medium text-white"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 font-medium text-white cursor-pointer"
                 >
-                  <span className="text-[#5fdee7]">›</span>
+                  <span className="text-[#ffd700]">›</span>
                   <span>Contact Us</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={onOpenPrivacy}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span className="text-[#5fdee7]">›</span>
-                  <span>Privacy Policy</span>
+                  <span className="text-[#ffd700]">›</span>
+                  <span>Privacy Policy &amp; Ad Disclosure</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={onOpenTerms}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span className="text-[#5fdee7]">›</span>
+                  <span className="text-[#ffd700]">›</span>
                   <span>Terms &amp; Conditions</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={onOpenDisclaimer}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 text-[#ffd700] font-semibold"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 text-[#ffd700] font-semibold cursor-pointer"
                 >
                   <span className="text-[#ffd700]">›</span>
                   <span>Disclaimer</span>
@@ -158,27 +160,27 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={onOpenSitemap}
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 text-[#5fdee7] font-semibold"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 text-[#ffd700] font-semibold cursor-pointer"
                 >
-                  <Network className="w-3 h-3 text-[#5fdee7]" />
+                  <Network className="w-3 h-3 text-[#ffd700]" />
                   <span>HTML Interactive Sitemap</span>
                 </button>
               </li>
               <li>
                 <a
-                  href="./sitemap.xml"
+                  href="/sitemap.xml"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 text-slate-400 hover:underline"
+                  className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5 text-slate-300 hover:underline cursor-pointer"
                 >
-                  <ExternalLink className="w-3 h-3 text-slate-400" />
-                  <span>XML Sitemap (Raw Feed)</span>
+                  <ExternalLink className="w-3 h-3 text-[#ffd700]" />
+                  <span>XML Sitemap (Direct Feed)</span>
                 </a>
               </li>
               <li>
                 <button
                   onClick={onOpenStandards}
-                  className="hover:text-[#ffd700] transition-colors text-left text-slate-400"
+                  className="hover:text-[#ffd700] transition-colors text-left text-slate-400 cursor-pointer"
                 >
                   <span>Editorial Standards &amp; Review Protocols</span>
                 </button>
@@ -198,7 +200,7 @@ export const Footer: React.FC<FooterProps> = ({
               <div className="p-2.5 rounded-lg bg-[#0b2721] border border-white/10 space-y-1.5">
                 <div className="text-[10px] text-slate-400 uppercase tracking-wider">Direct Editorial Email:</div>
                 <div className="flex items-center gap-2 text-white">
-                  <Mail className="w-3.5 h-3.5 text-[#5fdee7] shrink-0" />
+                  <Mail className="w-3.5 h-3.5 text-[#ffd700] shrink-0" />
                   <a
                     href="mailto:ahmadali07121@gmail.com"
                     className="hover:text-[#ffd700] transition-colors font-bold break-all"
@@ -211,7 +213,7 @@ export const Footer: React.FC<FooterProps> = ({
               <div className="p-2.5 rounded-lg bg-[#0b2721] border border-white/10 space-y-1.5">
                 <div className="text-[10px] text-slate-400 uppercase tracking-wider">Phone &amp; WhatsApp:</div>
                 <div className="flex items-center gap-2 text-white">
-                  <Phone className="w-3.5 h-3.5 text-[#5fdee7] shrink-0" />
+                  <Phone className="w-3.5 h-3.5 text-[#ffd700] shrink-0" />
                   <a
                     href="tel:03069256639"
                     className="hover:text-[#ffd700] transition-colors font-bold"
@@ -222,7 +224,7 @@ export const Footer: React.FC<FooterProps> = ({
                     href="https://wa.me/923069256639"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ml-auto text-[10px] px-2 py-0.5 rounded bg-emerald-600/30 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-600 hover:text-white transition-colors"
+                    className="ml-auto text-[10px] px-2 py-0.5 rounded bg-[#ffd700]/15 text-[#ffd700] border border-[#ffd700]/40 hover:bg-[#ffd700] hover:text-slate-950 font-bold transition-colors"
                   >
                     WhatsApp Chat
                   </a>
@@ -241,35 +243,35 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="flex flex-wrap items-center gap-4">
             <button
               onClick={onOpenPrivacy}
-              className="hover:text-white transition-colors"
+              className="hover:text-[#ffd700] transition-colors cursor-pointer"
             >
-              Privacy
+              Privacy Policy
             </button>
             <span>·</span>
             <button
               onClick={onOpenTerms}
-              className="hover:text-white transition-colors"
+              className="hover:text-[#ffd700] transition-colors cursor-pointer"
             >
               Terms
             </button>
             <span>·</span>
             <button
               onClick={onOpenDisclaimer}
-              className="hover:text-white transition-colors text-[#ffd700]"
+              className="hover:text-[#ffd700] transition-colors text-[#ffd700] font-semibold cursor-pointer"
             >
               Disclaimer
             </button>
             <span>·</span>
             <button
               onClick={onOpenSitemap}
-              className="hover:text-white transition-colors text-[#5fdee7]"
+              className="hover:text-[#ffd700] transition-colors text-[#ffd700] cursor-pointer"
             >
               Sitemap
             </button>
             <span>·</span>
             <button
               onClick={onOpenContact}
-              className="hover:text-white transition-colors"
+              className="hover:text-[#ffd700] transition-colors cursor-pointer"
             >
               Contact
             </button>

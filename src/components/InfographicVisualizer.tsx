@@ -156,12 +156,10 @@ export const InfographicVisualizer: React.FC<InfographicVisualizerProps> = ({
                 setActiveTab('spec_matrix');
               });
             }}
-            className={`w-full h-full object-cover max-h-[580px] transition-all duration-500 group-hover:scale-[1.02] ${
-              imageLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
+            className="w-full h-full object-cover max-h-[580px] transition-transform duration-500 group-hover:scale-[1.02] block"
           />
           {/* Subtle bottom gradient overlay with label */}
-          <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-300 z-10">
+          <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-300 z-10 pointer-events-none">
             <span className="text-[#5fdee7] font-semibold truncate max-w-[65%]">{infographic.subtitle}</span>
             <span className="text-[#ffd700] font-bold text-[9px] sm:text-[10px] shrink-0">16:9 8K RENDER</span>
           </div>

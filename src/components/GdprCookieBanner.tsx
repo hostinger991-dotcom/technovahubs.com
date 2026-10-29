@@ -49,15 +49,15 @@ export const GdprCookieBanner: React.FC = () => {
 
   return (
     <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-xl z-50 animate-in slide-in-from-bottom-5 duration-300">
-      <div className="bg-[#081c18]/95 backdrop-blur-xl border border-[#5fdee7]/40 rounded-2xl p-5 shadow-[0_15px_50px_rgba(0,0,0,0.85)] text-slate-200">
+      <div className="bg-[#081c18]/95 backdrop-blur-xl border border-[#ffd700]/40 rounded-2xl p-5 shadow-[0_15px_50px_rgba(0,0,0,0.85)] text-slate-200">
         <div className="flex items-start gap-3 mb-3">
-          <div className="p-2 rounded-lg bg-[#0b2721] border border-[#5fdee7] text-[#ffd700] shrink-0 mt-0.5">
+          <div className="p-2 rounded-lg bg-[#0b2721] border border-[#ffd700] text-[#ffd700] shrink-0 mt-0.5 shadow-[0_0_10px_rgba(255,215,0,0.25)]">
             <Shield className="w-5 h-5" />
           </div>
           <div>
             <h4 className="text-sm font-bold text-white flex items-center gap-2">
               <span>GDPR Privacy &amp; Consent Transparency</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#ffd700]/15 text-[#ffd700] border border-[#ffd700]/30 font-mono font-bold">
                 EU ePrivacy Directive
               </span>
             </h4>
@@ -110,7 +110,7 @@ export const GdprCookieBanner: React.FC = () => {
         <div className="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs">
           <button
             onClick={() => setShowCustomize(!showCustomize)}
-            className="text-[11px] font-mono text-[#5fdee7] hover:text-[#ffd700] flex items-center gap-1 transition-colors"
+            className="text-[11px] font-mono text-[#ffd700] hover:text-[#ffcc00] flex items-center gap-1 transition-colors cursor-pointer"
           >
             <Sliders className="w-3.5 h-3.5" />
             <span>{showCustomize ? 'Hide Settings' : 'Customize Preferences'}</span>
@@ -119,14 +119,14 @@ export const GdprCookieBanner: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={handleDeclineNonEssential}
-              className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:border-white/20 transition-colors font-medium"
+              className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-[#ffd700] hover:border-[#ffd700] transition-colors font-medium cursor-pointer"
             >
               Essential Only
             </button>
             {showCustomize ? (
               <button
                 onClick={handleSaveCustom}
-                className="px-4 py-1.5 rounded-lg bg-[#5fdee7] text-slate-950 font-bold hover:bg-[#4ecad3] transition-colors"
+                className="px-4 py-1.5 rounded-lg bg-[#ffd700] text-slate-950 font-bold hover:bg-[#ffcc00] transition-colors cursor-pointer shadow-[0_0_12px_rgba(255,215,0,0.3)]"
               >
                 Save Preferences
               </button>

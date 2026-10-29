@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Specifically allow ad verification and search crawlers
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+# Crawl delay & sitemap location
+Sitemap: https://technovahubs.com/sitemap.xml

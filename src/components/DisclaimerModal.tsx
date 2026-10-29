@@ -15,11 +15,11 @@ export const DisclaimerModal: React.FC<DisclaimerModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-in fade-in duration-200 select-none">
-      <div className="max-w-3xl w-full bg-[#081c18] border border-[#5fdee7]/40 rounded-2xl p-6 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-in fade-in duration-200">
+      <div className="max-w-3xl w-full bg-[#081c18] border border-[#ffd700]/40 rounded-2xl p-6 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-1.5 rounded-full bg-white/10 text-slate-300 hover:bg-[#ffd700] hover:text-slate-950 transition-colors"
+          className="absolute top-5 right-5 p-1.5 rounded-full bg-white/10 text-slate-300 hover:bg-[#ffd700] hover:text-slate-950 transition-colors cursor-pointer"
           aria-label="Close Disclaimer Modal"
         >
           <X className="w-5 h-5" />
@@ -27,17 +27,17 @@ export const DisclaimerModal: React.FC<DisclaimerModalProps> = ({
 
         {/* Modal Header */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 rounded-lg bg-[#0b2721] border border-[#ffd700] text-[#ffd700]">
+          <div className="p-2.5 rounded-xl bg-[#0b2721] border border-[#ffd700] text-[#ffd700] shadow-[0_0_12px_rgba(255,215,0,0.3)]">
             <Scale className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">Editorial &amp; Legal Disclaimer</h2>
-            <p className="text-xs font-mono text-[#5fdee7]">TECHNOLOGY EVALUATION, BENCHMARKING &amp; DISCLOSURE POLICIES</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Editorial, Advertising &amp; Legal Disclaimer</h2>
+            <p className="text-xs font-mono text-[#ffd700]">TECHNOLOGY EVALUATION, BENCHMARKING &amp; DISCLOSURE POLICIES</p>
           </div>
         </div>
 
         {/* Highlight Callout */}
-        <div className="mb-6 p-4 rounded-xl bg-[#0b2721] border border-[#ffd700]/30 flex items-start gap-3">
+        <div className="mb-6 p-4 rounded-xl bg-[#0b2721] border border-[#ffd700]/40 flex items-start gap-3 shadow-[0_0_15px_rgba(255,215,0,0.1)]">
           <AlertTriangle className="w-5 h-5 text-[#ffd700] shrink-0 mt-0.5" />
           <p className="text-xs text-slate-300 leading-relaxed font-sans">
             The evaluations, telemetry data, benchmarks, and technical analyses published on <strong className="text-white">technovahubs / Daily Tech Radar</strong> are intended solely for educational, journalistic, and informational purposes. Please review the specific disclaimers below prior to implementing modifications, configuring network infrastructure, or making purchasing decisions.
@@ -74,17 +74,17 @@ export const DisclaimerModal: React.FC<DisclaimerModalProps> = ({
             </p>
           </section>
 
-          {/* 3. Affiliate Links & Financial Transparency */}
+          {/* 3. Programmatic Advertising, Affiliate Links & FTC Transparency */}
           <section className="space-y-2 border-b border-white/5 pb-5">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
               <span className="text-[#ffd700] font-mono">03.</span>
-              <span>Affiliate Partnerships &amp; FTC Transparency</span>
+              <span>Programmatic Advertising (RevBid &amp; AdSense) &amp; FTC Transparency</span>
             </h3>
             <p>
-              In accordance with Federal Trade Commission (FTC) guidelines, technovahubs maintains strict separation between editorial evaluations and monetization. We may earn an affiliate commission when readers click through to verified merchant retailers or purchase hardware reviewed on our pages. 
+              In accordance with Federal Trade Commission (FTC) guidelines and Better Ads Standards, technovahubs maintains strict division between journalistic testing and monetization. We display programmatic display and native advertisements served via certified networks including RevBid, Google AdSense, and certified Prebid supply-side platforms.
             </p>
             <p className="text-slate-400">
-              These affiliate arrangements never influence laboratory test scoring, performance benchmark rankings, or editorial conclusions. We never accept sponsored editorial rankings or pay-for-placement testing awards.
+              Advertisements are clearly distinguished with "ADVERTISEMENT" labels and do not dictate editorial scoring, laboratory benchmark results, or hardware recommendations. We may also earn standard affiliate commissions on merchant purchases made through reviewed product links at no additional cost to our readers.
             </p>
           </section>
 

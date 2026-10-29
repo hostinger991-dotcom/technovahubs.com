@@ -3,6 +3,7 @@ import { allArticles, CATEGORIES, Article, CategoryMeta } from './data/articles'
 import { Header } from './components/Header';
 import { ContinuousTicker } from './components/ContinuousTicker';
 import { ArticleCard } from './components/ArticleCard';
+import { AdSlot } from './components/AdSlot';
 import { getSafeImageUrl, handleImageError } from './utils/imageHelper';
 import { ArticleReaderModal } from './components/ArticleReaderModal';
 import { EditorialStandardsModal } from './components/EditorialStandardsModal';
@@ -65,6 +66,38 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Sync URL hash with active article for direct link opening & sitemap navigation
+  useEffect(() => {
+    const syncFromHash = () => {
+      const rawHash = window.location.hash.replace(/^#\/?/, '');
+      if (rawHash) {
+        const found = allArticles.find(
+          (a) => a.slug === rawHash || a.id === rawHash || a.id === `art-${rawHash}`
+        );
+        if (found) {
+          setActiveArticle(found);
+        }
+      }
+    };
+
+    syncFromHash();
+    window.addEventListener('hashchange', syncFromHash);
+    return () => window.removeEventListener('hashchange', syncFromHash);
+  }, []);
+
+  // Update hash when activeArticle changes
+  const handleOpenArticle = (article: Article) => {
+    setActiveArticle(article);
+    window.location.hash = article.slug;
+  };
+
+  const handleCloseArticle = () => {
+    setActiveArticle(null);
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  };
+
   // Filtered Articles based on Category
   const filteredArticles = useMemo(() => {
     if (selectedCategory === 'all') {
@@ -95,9 +128,9 @@ export default function App() {
   };
 
   const handleOpenTickerArticle = (articleId: string) => {
-    const target = allArticles.find((a) => a.id === articleId);
+    const target = allArticles.find((a) => a.id === articleId || a.slug === articleId);
     if (target) {
-      setActiveArticle(target);
+      handleOpenArticle(target);
     }
   };
 
@@ -118,19 +151,24 @@ export default function App() {
       {/* 2. Continuous Ticker Tape directly underneath main header */}
       <ContinuousTicker onSelectArticle={handleOpenTickerArticle} />
 
+      {/* 3. Top Header Leaderboard Ad Unit (IAB 728x90 compliant for RevBid & AdSense) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 w-full">
+        <AdSlot slotId="header-leaderboard" format="leaderboard" />
+      </div>
+
       {/* Main Content Feed Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-12">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-4 space-y-10">
         {/* Curated Editorial Lead Marquee (When on Home Feed) */}
         {selectedCategory === 'all' && (
-          <section className="relative rounded-2xl overflow-hidden border border-[#5fdee7]/30 bg-gradient-to-r from-[#09221c] via-[#0b2b24] to-[#081f19] p-6 sm:p-10 shadow-[0_15px_50px_rgba(0,0,0,0.6)]">
+          <section className="relative rounded-2xl overflow-hidden border border-[#ffd700]/30 bg-gradient-to-r from-[#09221c] via-[#0b2b24] to-[#081f19] p-6 sm:p-10 shadow-[0_15px_50px_rgba(0,0,0,0.6)]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Lead Prose */}
               <div className="lg:col-span-7 space-y-4">
-                <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#5fdee7]">
-                  <span className="w-2 h-2 rounded-full bg-[#5fdee7] animate-pulse" />
+                <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#ffd700]">
+                  <span className="w-2 h-2 rounded-full bg-[#ffd700] animate-pulse" />
                   <span className="font-bold uppercase tracking-wider">DAILY TECH RADAR · LEAD INVESTIGATION</span>
                   <span className="text-slate-500">·</span>
-                  <span>{leadArticle.publishedAt}</span>
+                  <span className="text-slate-300">{leadArticle.publishedAt}</span>
                   <span className="text-slate-500">·</span>
                   <span className="text-[#ffd700] font-bold">{leadArticle.wordCount} Words</span>
                 </div>
@@ -145,15 +183,15 @@ export default function App() {
 
                 {/* Lead Benchmarks Snapshot */}
                 <div className="pt-2 grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
-                  <div className="p-2.5 rounded-lg bg-black/40 border border-white/10">
+                  <div className="p-2.5 rounded-lg bg-black/40 border border-[#ffd700]/25">
                     <div className="text-[10px] text-slate-400">Energy Density</div>
                     <div className="text-[#ffd700] font-bold text-sm">830 Wh/L</div>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-black/40 border border-white/10">
+                  <div className="p-2.5 rounded-lg bg-black/40 border border-[#ffd700]/25">
                     <div className="text-[10px] text-slate-400">Peak HDR Luma</div>
-                    <div className="text-[#5fdee7] font-bold text-sm">4,520 Nits</div>
+                    <div className="text-[#ffd700] font-bold text-sm">4,520 Nits</div>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-black/40 border border-white/10 col-span-2 sm:col-span-1">
+                  <div className="p-2.5 rounded-lg bg-black/40 border border-[#ffd700]/25 col-span-2 sm:col-span-1">
                     <div className="text-[10px] text-slate-400">Sustained FPS</div>
                     <div className="text-emerald-400 font-bold text-sm">119.8 FPS</div>
                   </div>
@@ -162,8 +200,8 @@ export default function App() {
                 {/* Action CTA with Yellow Hover Micro-Interaction */}
                 <div className="pt-4 flex flex-wrap items-center gap-4">
                   <button
-                    onClick={() => setActiveArticle(leadArticle)}
-                    className="px-6 py-3 rounded-xl bg-[#ffd700] text-slate-950 font-bold text-sm hover:bg-[#ffcc00] transition-all flex items-center gap-2 btn-yellow-hover shadow-[0_0_20px_rgba(255,215,0,0.4)]"
+                    onClick={() => handleOpenArticle(leadArticle)}
+                    className="px-6 py-3 rounded-xl bg-[#ffd700] text-slate-950 font-bold text-sm hover:bg-[#ffcc00] transition-all flex items-center gap-2 btn-yellow-hover shadow-[0_0_20px_rgba(255,215,0,0.4)] cursor-pointer"
                   >
                     <span>Read Full 1,260-Word Paper</span>
                     <ArrowRight className="w-4 h-4" />
@@ -171,7 +209,7 @@ export default function App() {
 
                   <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
                     <ShieldCheck className="w-4 h-4 text-[#ffd700]" />
-                    <span>Peer-Reviewed Hardware Data</span>
+                    <span>Peer-Reviewed Hardware Telemetry</span>
                   </div>
                 </div>
               </div>
@@ -179,23 +217,23 @@ export default function App() {
               {/* Right Column: Visual Teardown Preview */}
               <div className="lg:col-span-5">
                 <div
-                  onClick={() => setActiveArticle(leadArticle)}
-                  className="rounded-xl border border-white/15 bg-black/40 p-2 cursor-pointer hover:border-[#ffd700] hover:shadow-[0_0_25px_rgba(255,215,0,0.25)] transition-all duration-300 shadow-2xl group"
+                  onClick={() => handleOpenArticle(leadArticle)}
+                  className="rounded-xl border border-white/15 bg-black/40 p-2 cursor-pointer hover:border-[#ffd700] hover:shadow-[0_0_25px_rgba(255,215,0,0.35)] transition-all duration-300 shadow-2xl group"
                 >
                   {leadArticle.imageUrl ? (
                     <div className="relative rounded-lg overflow-hidden border border-white/10 group-hover:border-[#ffd700]/70 transition-all bg-[#061411]">
                       <img
                         src={getSafeImageUrl(leadArticle.imageUrl)}
                         alt={leadArticle.infographic.title}
-                        className="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-500 block"
                         loading="eager"
                         decoding="async"
                         onError={(e) => handleImageError(e, leadArticle.imageUrl)}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4">
-                        <div className="text-[10px] font-mono text-[#5fdee7] uppercase tracking-wider mb-1 flex items-center justify-between">
+                        <div className="text-[10px] font-mono text-[#ffd700] uppercase tracking-wider mb-1 flex items-center justify-between">
                           <span>INFOGRAPHIC BLUEPRINT · 6 PANELS</span>
-                          <span className="text-[#ffd700] text-[9px] px-1.5 py-0.5 rounded bg-black/50 border border-[#ffd700]/40">
+                          <span className="text-[#ffd700] text-[9px] px-1.5 py-0.5 rounded bg-black/60 border border-[#ffd700]/50 font-bold">
                             VERIFIED 2026
                           </span>
                         </div>
@@ -205,7 +243,7 @@ export default function App() {
                         <div className="grid grid-cols-2 gap-1.5 pt-2 font-mono text-[9px]">
                           {leadArticle.infographic.panels.slice(0, 4).map((p, i) => (
                             <div key={i} className="px-2 py-1 rounded bg-black/60 border border-white/10 backdrop-blur-xs">
-                              <span className="text-[#5fdee7] font-semibold">{p.title}: </span>
+                              <span className="text-[#ffd700] font-semibold">{p.title}: </span>
                               <span className="text-slate-300">{p.metric}</span>
                             </div>
                           ))}
@@ -216,27 +254,7 @@ export default function App() {
                         </div>
                       </div>
                     </div>
-                  ) : (
-                    <div className="p-3 bg-gradient-to-br from-[#06121e] to-[#040c14] rounded-lg border border-white/10 text-center space-y-2">
-                      <div className="text-[10px] font-mono text-[#5fdee7] uppercase tracking-wider">
-                        INFOGRAPHIC BLUEPRINT · 6 PANELS
-                      </div>
-                      <div className="text-base font-bold text-white group-hover:text-[#ffd700] transition-colors">
-                        {leadArticle.infographic.title}
-                      </div>
-                      <div className="grid grid-cols-2 gap-2 text-left pt-2 font-mono text-[10px]">
-                        {leadArticle.infographic.panels.slice(0, 4).map((p, i) => (
-                          <div key={i} className="p-2 rounded bg-white/5 border border-white/5">
-                            <div className="text-[#5fdee7] font-bold truncate">{p.title}</div>
-                            <div className="text-slate-300 truncate">{p.metric}</div>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="text-[10px] text-slate-400 pt-1 group-hover:text-white transition-colors">
-                        Click to expand full 6-panel infographic matrix →
-                      </div>
-                    </div>
-                  )}
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -245,22 +263,22 @@ export default function App() {
 
         {/* Daily Tech Radar Trending Quick-Bar */}
         {selectedCategory === 'all' && (
-          <section className="p-4 rounded-xl bg-[#0b2721]/50 border border-white/10">
+          <section className="p-4 rounded-xl bg-[#0b2721]/60 border border-[#ffd700]/20">
             <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ffd700] uppercase tracking-wider mb-3">
-              <Flame className="w-4 h-4 text-orange-400" />
+              <Flame className="w-4 h-4 text-[#ffd700]" />
               <span>Trending on Daily Tech Radar</span>
-              <span className="text-slate-500 font-normal">| Verified Laboratory Hot Topics</span>
+              <span className="text-slate-400 font-normal">| Verified Laboratory Hot Topics</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {trendingArticles.map((art) => (
                 <div
                   key={art.id}
-                  onClick={() => setActiveArticle(art)}
+                  onClick={() => handleOpenArticle(art)}
                   className="p-3 rounded-lg bg-[#061411] border border-white/5 hover:border-[#ffd700] cursor-pointer group transition-all"
                 >
-                  <div className="flex items-center justify-between text-[10px] font-mono text-[#5fdee7] mb-1">
+                  <div className="flex items-center justify-between text-[10px] font-mono text-[#ffd700] mb-1">
                     <span className="uppercase">{art.category.split('&')[0]}</span>
-                    <span className="text-[#ffd700]">{art.readTime}</span>
+                    <span className="text-slate-300">{art.readTime}</span>
                   </div>
                   <h4 className="text-xs font-bold text-white group-hover:text-[#ffd700] transition-colors line-clamp-2">
                     {art.title}
@@ -271,10 +289,13 @@ export default function App() {
           </section>
         )}
 
+        {/* Mid-Feed In-Feed Programmatic Ad Unit */}
+        <AdSlot slotId="feed-mid-placement" format="in-feed" />
+
         {/* Operational Telemetry Strip (Journal Facts & Peer Review) */}
-        <section className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3 border-y border-[#5fdee7]/20 text-xs font-mono">
+        <section className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3 border-y border-[#ffd700]/20 text-xs font-mono">
           <div className="p-3 rounded-lg bg-[#0b2721]/60 border border-white/5 flex items-center gap-3">
-            <Cpu className="w-5 h-5 text-[#5fdee7] shrink-0" />
+            <Cpu className="w-5 h-5 text-[#ffd700] shrink-0" />
             <div>
               <div className="text-slate-400 text-[10px]">KEYWORD PAPERS</div>
               <div className="text-white font-bold text-sm">20 Real Articles</div>
@@ -290,7 +311,7 @@ export default function App() {
           </div>
 
           <div className="p-3 rounded-lg bg-[#0b2721]/60 border border-white/5 flex items-center gap-3">
-            <Activity className="w-5 h-5 text-[#10b981] shrink-0" />
+            <Activity className="w-5 h-5 text-emerald-400 shrink-0" />
             <div>
               <div className="text-slate-400 text-[10px]">LABORATORY DATA</div>
               <div className="text-white font-bold text-sm">80+ Benchmarks</div>
@@ -298,7 +319,7 @@ export default function App() {
           </div>
 
           <div className="p-3 rounded-lg bg-[#0b2721]/60 border border-white/5 flex items-center gap-3">
-            <ShieldCheck className="w-5 h-5 text-[#38bdf8] shrink-0" />
+            <ShieldCheck className="w-5 h-5 text-[#ffd700] shrink-0" />
             <div>
               <div className="text-slate-400 text-[10px]">EDITORIAL INTEGRITY</div>
               <div className="text-white font-bold text-sm">100% Independent</div>
@@ -324,9 +345,9 @@ export default function App() {
             <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#0b2721] rounded-xl border border-white/10">
               <button
                 onClick={() => handleSelectCategory('all')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                   selectedCategory === 'all'
-                    ? 'bg-[#ffd700] text-slate-950 font-bold shadow-[0_0_12px_rgba(255,215,0,0.4)]'
+                    ? 'bg-[#ffd700] text-slate-950 font-bold shadow-[0_0_12px_rgba(255,215,0,0.5)]'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -336,9 +357,9 @@ export default function App() {
                 <button
                   key={cat.id}
                   onClick={() => handleSelectCategory(cat.name)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                     selectedCategory === cat.name
-                      ? 'bg-[#ffd700] text-slate-950 font-bold shadow-[0_0_12px_rgba(255,215,0,0.4)]'
+                      ? 'bg-[#ffd700] text-slate-950 font-bold shadow-[0_0_12px_rgba(255,215,0,0.5)]'
                       : 'text-slate-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -354,7 +375,7 @@ export default function App() {
               <ArticleCard
                 key={article.id}
                 article={article}
-                onOpenArticle={(art) => setActiveArticle(art)}
+                onOpenArticle={(art) => handleOpenArticle(art)}
               />
             ))}
           </div>
@@ -371,7 +392,7 @@ export default function App() {
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                  className="px-3 py-1.5 rounded-lg bg-[#0b2721] border border-white/10 text-xs font-mono text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed pagination-yellow-hover"
+                  className="px-3 py-1.5 rounded-lg bg-[#0b2721] border border-white/10 text-xs font-mono text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed pagination-yellow-hover cursor-pointer"
                 >
                   Previous
                 </button>
@@ -380,7 +401,7 @@ export default function App() {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`w-8 h-8 rounded-lg text-xs font-mono font-semibold transition-all ${
+                    className={`w-8 h-8 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer ${
                       currentPage === page
                         ? 'bg-[#ffd700] text-slate-950 font-bold shadow-[0_0_15px_rgba(255,215,0,0.5)]'
                         : 'bg-[#0b2721] border border-white/10 text-slate-300 pagination-yellow-hover'
@@ -393,7 +414,7 @@ export default function App() {
                 <button
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                  className="px-3 py-1.5 rounded-lg bg-[#0b2721] border border-white/10 text-xs font-mono text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed pagination-yellow-hover"
+                  className="px-3 py-1.5 rounded-lg bg-[#0b2721] border border-white/10 text-xs font-mono text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed pagination-yellow-hover cursor-pointer"
                 >
                   Next
                 </button>
@@ -402,10 +423,13 @@ export default function App() {
           )}
         </section>
 
+        {/* Bottom Leaderboard Anchor Slot */}
+        <AdSlot slotId="footer-anchor-leaderboard" format="leaderboard" />
+
         {/* Editorial Standards & Newsroom Contact Banner */}
-        <section className="rounded-2xl p-6 sm:p-8 bg-[#0b2721]/70 border border-[#5fdee7]/25 flex flex-col md:flex-row items-center justify-between gap-6">
+        <section className="rounded-2xl p-6 sm:p-8 bg-[#0b2721]/70 border border-[#ffd700]/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#5fdee7] uppercase tracking-wider mb-2">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#ffd700] uppercase tracking-wider mb-2">
               <ShieldCheck className="w-4 h-4 text-[#ffd700]" />
               <span>INDEPENDENT ENGINEERING JOURNALISM · DAILY TECH RADAR</span>
             </div>
@@ -417,14 +441,14 @@ export default function App() {
             </p>
             <div className="mt-3 flex flex-wrap items-center gap-4 font-mono text-xs text-slate-300">
               <div className="flex items-center gap-1.5 text-[#ffd700]">
-                <Mail className="w-4 h-4 text-[#5fdee7]" />
+                <Mail className="w-4 h-4 text-[#ffd700]" />
                 <a href="mailto:ahmadali07121@gmail.com" className="hover:underline font-bold">
                   ahmadali07121@gmail.com
                 </a>
               </div>
               <span className="text-slate-600">·</span>
               <div className="flex items-center gap-1.5 text-[#ffd700]">
-                <Phone className="w-4 h-4 text-[#5fdee7]" />
+                <Phone className="w-4 h-4 text-[#ffd700]" />
                 <a href="tel:03069256639" className="hover:underline font-bold">
                   03069256639
                 </a>
@@ -435,13 +459,13 @@ export default function App() {
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <button
               onClick={() => setStandardsModalOpen(true)}
-              className="px-4 py-2.5 rounded-lg bg-[#061411] border border-white/15 text-xs text-slate-200 hover:text-[#ffd700] hover:border-[#ffd700] transition-colors"
+              className="px-4 py-2.5 rounded-lg bg-[#061411] border border-white/15 text-xs text-slate-200 hover:text-[#ffd700] hover:border-[#ffd700] transition-colors cursor-pointer"
             >
               Review Testing Protocols
             </button>
             <button
               onClick={() => setContactModalOpen(true)}
-              className="px-5 py-2.5 rounded-lg bg-[#ffd700] text-slate-950 font-bold text-xs hover:bg-[#ffcc00] btn-yellow-hover transition-all shadow-[0_0_15px_rgba(255,215,0,0.4)]"
+              className="px-5 py-2.5 rounded-lg bg-[#ffd700] text-slate-950 font-bold text-xs hover:bg-[#ffcc00] btn-yellow-hover transition-all shadow-[0_0_15px_rgba(255,215,0,0.4)] cursor-pointer"
             >
               Contact Desk
             </button>
@@ -466,7 +490,7 @@ export default function App() {
       {activeArticle && (
         <ArticleReaderModal
           article={activeArticle}
-          onClose={() => setActiveArticle(null)}
+          onClose={handleCloseArticle}
         />
       )}
 
@@ -481,7 +505,8 @@ export default function App() {
         isOpen={sitemapModalOpen}
         onClose={() => setSitemapModalOpen(false)}
         articles={allArticles}
-        onSelectArticle={(art) => setActiveArticle(art)}
+        onSelectArticle={(art) => handleOpenArticle(art)}
+        onSelectCategory={(cat) => handleSelectCategory(cat)}
         onOpenAbout={() => setAboutModalOpen(true)}
         onOpenContact={() => setContactModalOpen(true)}
         onOpenPrivacy={() => setPrivacyModalOpen(true)}
@@ -519,7 +544,7 @@ export default function App() {
         isOpen={searchModalOpen}
         onClose={() => setSearchModalOpen(false)}
         articles={allArticles}
-        onSelectArticle={(art) => setActiveArticle(art)}
+        onSelectArticle={(art) => handleOpenArticle(art)}
       />
 
       {/* 7. GDPR Cookie Banner */}
