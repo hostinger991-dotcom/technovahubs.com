@@ -20,7 +20,7 @@ export const category3Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1270,
     approvedPromptText: 'A high-tech infographic titled "BEST VPN FOR ONLINE PRIVACY" with a subtitle "ENCRYPTED TUNNELS & NO-LOG SECURITY SOLUTIONS". Digital world map with encrypted data pipelines background. 6 panels: MILITARY-GRADE ENCRYPTION, STRICT NO-LOGS POLICY, KILL SWITCH PROTECTION, MULTI-HOP & DOUBLE VPN, HIGH-SPEED SERVER NETWORK, DNS LEAK PROTECTION. Deep navy blue, electric cyan, neon orange.',
-    imageUrl: './images/real_vpn_privacy_1792833709206.jpg',
+    imageUrl: '/images/real_vpn_privacy_1792833709206.jpg',
     infographic: {
       title: 'BEST VPN FOR ONLINE PRIVACY',
       subtitle: 'ENCRYPTED TUNNELS & NO-LOG SECURITY SOLUTIONS',
@@ -156,7 +156,7 @@ export const category3Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1250,
     approvedPromptText: 'A high-tech infographic titled "TOP ANTIVIRUS SOFTWARE REVIEWS" with a subtitle "NEXT-GEN MALWARE DETECTION & SYSTEM SHIELDS". Digital monitor protected by 3D shield background. 6 panels: REAL-TIME THREAT SCANNING, RANSOMWARE PROTECTION, BEHAVIORAL HEURISTICS, PHISHING & WEB DEFENSE, SYSTEM PERFORMANCE IMPACT, AUTOMATED CLOUD UPDATES. Charcoal black, security green, alert red.',
-    imageUrl: './images/real_antivirus_sec_1792833724249.jpg',
+    imageUrl: '/images/real_antivirus_sec_1792833724249.jpg',
     infographic: {
       title: 'TOP ANTIVIRUS SOFTWARE REVIEWS',
       subtitle: 'NEXT-GEN MALWARE DETECTION & SYSTEM SHIELDS',
@@ -292,7 +292,7 @@ export const category3Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1260,
     approvedPromptText: 'A high-tech infographic titled "HOW TO SPEED UP WINDOWS PC" with a subtitle "SYSTEM OPTIMIZATION & PERFORMANCE TUNING". Windows desktop dashboard with speed gauges background. 6 panels: STARTUP PROGRAM CONTROL, DISK CLEANUP & TEMP FILES, RAM & PROCESS OPTIMIZATION, DRIVE DEFRAG & TRIM, VISUAL EFFECTS TUNING, WINDOWS UPDATE & DRIVERS. Windows blue, vibrant orange, clean white.',
-    imageUrl: './images/real_speedup_win11_1792833739264.jpg',
+    imageUrl: '/images/real_speedup_win11_1792833739264.jpg',
     infographic: {
       title: 'HOW TO SPEED UP WINDOWS PC',
       subtitle: 'SYSTEM OPTIMIZATION & PERFORMANCE TUNING',
@@ -427,7 +427,7 @@ export const category3Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1250,
     approvedPromptText: 'A high-tech infographic titled "SECURE PASSWORD MANAGERS" with a subtitle "ZERO-KNOWLEDGE VAULTS & CREDENTIAL SECURITY". Digital bank vault door background. 6 panels: ZERO-KNOWLEDGE ARCHITECTURE, MASTER PASSWORD & 2FA, BIOMETRIC UNLOCK, SECURE PASSWORD GENERATOR, CROSS-PLATFORM SYNC, DARK WEB BREACH MONITORING. Deep sapphire, metallic gold, dark teal.',
-    imageUrl: './images/real_pwd_manager_1792833756301.jpg',
+    imageUrl: '/images/real_pwd_manager_1792833756301.jpg',
     infographic: {
       title: 'SECURE PASSWORD MANAGERS',
       subtitle: 'ZERO-KNOWLEDGE VAULTS & CREDENTIAL SECURITY',
@@ -561,7 +561,7 @@ export const category3Articles: Article[] = [
     readTime: '8 min read',
     wordCount: 1260,
     approvedPromptText: 'A high-tech infographic titled "DATA PRIVACY PROTECTION GUIDE" with a subtitle "TACTICS TO SECURE YOUR DIGITAL FOOTPRINT". Digital footprint silhouette with barrier rings background. 6 panels: TRACKER & COOKIE BLOCKING, ENCRYPTED MESSAGING, DATA BROKER OPT-OUT, SECURE SEARCH ENGINES, APP PERMISSION CONTROL, METADATA REMOVAL. Dark purple, cyan blue, alert amber.',
-    imageUrl: './images/real_data_privacy_1792833770493.jpg',
+    imageUrl: '/images/real_data_privacy_1792833770493.jpg',
     infographic: {
       title: 'DATA PRIVACY PROTECTION GUIDE',
       subtitle: 'TACTICS TO SECURE YOUR DIGITAL FOOTPRINT',

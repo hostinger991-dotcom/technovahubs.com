@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { InfographicConfig } from '../types/article';
+import { getSafeImageUrl, handleImageError } from '../utils/imageHelper';
 import { 
   Cpu, 
   Layers, 
@@ -136,32 +137,33 @@ export const InfographicVisualizer: React.FC<InfographicVisualizerProps> = ({
 
       {/* Mode 1: Real AI Generated Realistic Infographic Image */}
       {activeTab === 'image' && imageUrl && (
-        <div className="relative group overflow-hidden bg-black/60 flex items-center justify-center">
+        <div className="relative group overflow-hidden bg-[#061411] flex items-center justify-center min-h-[190px] sm:min-h-[250px] aspect-[16/9] w-full">
+          {/* Mobile-friendly Shimmer placeholder while image loads */}
+          {!imageLoaded && (
+            <div className="absolute inset-0 bg-[#061411] flex flex-col items-center justify-center z-0 animate-pulse">
+              <div className="w-8 h-8 rounded-full border-2 border-[#5fdee7] border-t-transparent animate-spin mb-2" />
+              <span className="text-[10px] font-mono text-[#ffd700] uppercase tracking-wider">Loading Telemetry Visual...</span>
+            </div>
+          )}
+
           <img
-            src={imageUrl}
+            src={getSafeImageUrl(imageUrl)}
             alt={infographic.title}
-            loading="lazy"
-            referrerPolicy="no-referrer"
+            decoding="async"
+            onLoad={() => setImageLoaded(true)}
             onError={(e) => {
-              const target = e.currentTarget;
-              if (!target.dataset.triedFallback) {
-                target.dataset.triedFallback = '1';
-                const filename = (imageUrl || '').split('/').pop();
-                target.src = `./images/${filename}`;
-              } else if (target.dataset.triedFallback === '1') {
-                target.dataset.triedFallback = '2';
-                const filename = (imageUrl || '').split('/').pop();
-                target.src = `/images/${filename}`;
-              } else {
+              handleImageError(e, imageUrl, () => {
                 setActiveTab('spec_matrix');
-              }
+              });
             }}
-            className="w-full h-auto object-cover max-h-[580px] transition-transform duration-500 group-hover:scale-[1.01]"
+            className={`w-full h-full object-cover max-h-[580px] transition-all duration-500 group-hover:scale-[1.02] ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
           />
           {/* Subtle bottom gradient overlay with label */}
-          <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between text-[11px] font-mono text-slate-300">
-            <span className="text-[#5fdee7] font-semibold">{infographic.subtitle}</span>
-            <span className="text-[#ffd700] font-bold">16:9 8K PHOTOREALISTIC RENDER</span>
+          <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-300 z-10">
+            <span className="text-[#5fdee7] font-semibold truncate max-w-[65%]">{infographic.subtitle}</span>
+            <span className="text-[#ffd700] font-bold text-[9px] sm:text-[10px] shrink-0">16:9 8K RENDER</span>
           </div>
         </div>
       )}

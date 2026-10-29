@@ -3,6 +3,7 @@ import { allArticles, CATEGORIES, Article, CategoryMeta } from './data/articles'
 import { Header } from './components/Header';
 import { ContinuousTicker } from './components/ContinuousTicker';
 import { ArticleCard } from './components/ArticleCard';
+import { getSafeImageUrl, handleImageError } from './utils/imageHelper';
 import { ArticleReaderModal } from './components/ArticleReaderModal';
 import { EditorialStandardsModal } from './components/EditorialStandardsModal';
 import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
@@ -182,12 +183,14 @@ export default function App() {
                   className="rounded-xl border border-white/15 bg-black/40 p-2 cursor-pointer hover:border-[#ffd700] hover:shadow-[0_0_25px_rgba(255,215,0,0.25)] transition-all duration-300 shadow-2xl group"
                 >
                   {leadArticle.imageUrl ? (
-                    <div className="relative rounded-lg overflow-hidden border border-white/10 group-hover:border-[#ffd700]/70 transition-all">
+                    <div className="relative rounded-lg overflow-hidden border border-white/10 group-hover:border-[#ffd700]/70 transition-all bg-[#061411]">
                       <img
-                        src={leadArticle.imageUrl}
+                        src={getSafeImageUrl(leadArticle.imageUrl)}
                         alt={leadArticle.infographic.title}
                         className="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="eager"
+                        decoding="async"
+                        onError={(e) => handleImageError(e, leadArticle.imageUrl)}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4">
                         <div className="text-[10px] font-mono text-[#5fdee7] uppercase tracking-wider mb-1 flex items-center justify-between">
